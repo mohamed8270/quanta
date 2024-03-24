@@ -17,6 +17,7 @@ const Color qpink = Color(0xFFF91C4F);
 const Color qviolet = Color(0xFFa070c3);
 const Color qgrey = Color(0xFFECECEC);
 const Color qred = Color(0xFFFF0000);
+const Color qyellow = Color(0xFFFF9900);
 
 // Theme class
 class ThemeClass {

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quanta/constants/theme.dart';
 
@@ -13,7 +14,6 @@ class ChatPageAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      scrolledUnderElevation: 0,
       backgroundColor: qwhite,
       flexibleSpace: Container(
         decoration: const BoxDecoration(
@@ -30,11 +30,14 @@ class ChatPageAppBar extends StatelessWidget {
       automaticallyImplyLeading: false,
       leading: Padding(
         padding: const EdgeInsets.all(12),
-        child: SvgPicture.network(
-          'https://www.svgrepo.com/show/315017/chat.svg',
-          height: 16,
-          width: 16,
-          color: qblue,
+        child: InkWell(
+          onTap: () => Get.back(),
+          child: SvgPicture.network(
+            'https://www.svgrepo.com/show/488764/arrow-back.svg',
+            height: 16,
+            width: 16,
+            color: qblue,
+          ),
         ),
       ),
       title: Column(
