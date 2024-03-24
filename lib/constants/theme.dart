@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // Primary Colors
-const Color qblack = Color(0xFF131314);
+const Color qblack = Color(0xFF242424);
 const Color qblue = Color(0xFF4d83ef);
 const Color qwhite = Color(0xFFFFFFFF);
 
