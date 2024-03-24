@@ -24,8 +24,8 @@ class UserInputBox extends StatelessWidget {
       child: TextField(
         onChanged: onChanged,
         keyboardType: TextInputType.text,
-        cursorColor: qblue,
-        cursorHeight: 18,
+        cursorColor: qyellow,
+        cursorHeight: 20,
         style: GoogleFonts.poppins(
           fontSize: 11,
           fontWeight: FontWeight.w500,

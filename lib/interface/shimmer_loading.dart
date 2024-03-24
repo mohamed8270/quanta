@@ -15,15 +15,30 @@ class ShimmerLoadingAnimation extends StatefulWidget {
 class _ShimmerLoadingAnimationState extends State<ShimmerLoadingAnimation>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
-  late Animation<double> _animation;
+  late List<Animation<double>> _animations;
 
   @override
   void initState() {
     super.initState();
-    _animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 2));
-    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(parent: _animationController, curve: Curves.easeInOut));
+
+    // Create separate animations for each container
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1500), // Adjust duration as needed
+    );
+    _animations = List.generate(
+        4,
+        (index) => Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                parent: _animationController,
+                curve: Interval(
+                  0.25 * index, // Start each animation with 25% delay
+                  0.25 * (index + 1),
+                  curve: Curves.easeInOut,
+                ),
+              ),
+            ));
+
     _animationController.repeat(reverse: true);
   }
 
@@ -36,86 +51,37 @@ class _ShimmerLoadingAnimationState extends State<ShimmerLoadingAnimation>
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+
     return Shimmer.fromColors(
       baseColor: qgrey.withOpacity(0.4),
       highlightColor: qyellow,
       direction: ShimmerDirection.ltr,
-      period: const Duration(seconds: 2),
+      period: const Duration(seconds: 2), // Keep overall shimmer duration
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AnimatedBuilder(
-            animation: _animation,
+        children: List.generate(
+          4,
+          (index) => AnimatedBuilder(
+            animation: _animations[index],
             builder: (context, child) {
               return FadeTransition(
-                opacity: _animation,
+                opacity: _animations[index],
                 child: child,
               );
             },
-            child: Container(
-              height: screenSize.height * 0.02,
-              width: screenSize.width,
-              decoration: BoxDecoration(
-                color: qgrey,
-                borderRadius: BorderRadius.circular(5),
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Container(
+                height: screenSize.height * 0.02,
+                width: screenSize.width,
+                decoration: BoxDecoration(
+                  color: qgrey,
+                  borderRadius: BorderRadius.circular(5),
+                ),
               ),
             ),
           ),
-          const SizedBox(height: 8),
-          AnimatedBuilder(
-            animation: _animation,
-            builder: (context, child) {
-              return FadeTransition(
-                opacity: _animation,
-                child: child,
-              );
-            },
-            child: Container(
-              height: screenSize.height * 0.02,
-              width: screenSize.width,
-              decoration: BoxDecoration(
-                color: qgrey,
-                borderRadius: BorderRadius.circular(5),
-              ),
-            ),
-          ),
-          const SizedBox(height: 8),
-          AnimatedBuilder(
-            animation: _animation,
-            builder: (context, child) {
-              return FadeTransition(
-                opacity: _animation,
-                child: child,
-              );
-            },
-            child: Container(
-              height: screenSize.height * 0.02,
-              width: screenSize.width,
-              decoration: BoxDecoration(
-                color: qgrey,
-                borderRadius: BorderRadius.circular(5),
-              ),
-            ),
-          ),
-          const SizedBox(height: 8),
-          AnimatedBuilder(
-            animation: _animation,
-            builder: (context, child) {
-              return FadeTransition(
-                opacity: _animation,
-                child: child,
-              );
-            },
-            child: Container(
-              height: screenSize.height * 0.02,
-              width: screenSize.width * 0.8,
-              decoration: BoxDecoration(
-                color: qgrey,
-                borderRadius: BorderRadius.circular(5),
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

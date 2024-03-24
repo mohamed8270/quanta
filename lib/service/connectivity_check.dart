@@ -1,30 +1,38 @@
-// ignore_for_file: unrelated_type_equality_checks
+import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 
-class NetworkController extends GetxController {
-  var isConnected = true.obs;
+class ConnectivityController extends GetxController {
+  static ConnectivityController get to => Get.find<ConnectivityController>();
+
+  final Connectivity _connectivity = Connectivity();
+  final Rx<ConnectivityResult> connectionStatus = Rx(ConnectivityResult.none);
 
   @override
   void onInit() {
     super.onInit();
-    // Call checkConnectivity function on initialization
     checkConnectivity();
-    // Listen for network connectivity changes
-    Connectivity().onConnectivityChanged.listen((result) {
-      checkConnectivity();
+    connectionStatus.listen((connectivity) {
+      if (connectivity != ConnectivityResult.none) {
+        navigateToHomePage();
+      }
     });
   }
 
-  void checkConnectivity() async {
-    var connectivityResult = await Connectivity().checkConnectivity();
-    if (connectivityResult == ConnectivityResult.none) {
-      isConnected.value = false;
-    } else {
-      isConnected.value = true;
-    }
+  Future<void> checkConnectivity() async {
+    final List<ConnectivityResult> connectivityResults =
+        await (_connectivity.checkConnectivity());
+    ConnectivityResult connectionStatus = connectivityResults.isNotEmpty
+        ? connectivityResults.first
+        : ConnectivityResult.none;
+
+    this.connectionStatus.value = connectionStatus;
   }
 
-  bool get isInternetConnected => isConnected.value;
+  void navigateToHomePage() {
+    Timer(const Duration(seconds: 20), () {
+      Get.toNamed("bottomnavbar");
+    });
+  }
 }
