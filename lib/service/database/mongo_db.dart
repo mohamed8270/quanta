@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
 import 'package:get/get.dart';
@@ -9,11 +11,11 @@ class MongoDBclass extends GetxController {
     http.Response response = await http.get(
       Uri.tryParse('https://server-b848.onrender.com/products')!,
     );
-
-    Map<String, dynamic> mongodbres = jsonDecode(response.body);
-    List<dynamic> mongodbList = mongodbres[''];
+    // print(response);
+    List<dynamic> mongodbres = jsonDecode(response.body);
+    // print(mongodbres);
     List<MongoDBmodel> mongodbOut =
-        mongodbList.map((dynamic e) => MongoDBmodel.fromJson(e)).toList();
+        mongodbres.map((dynamic e) => MongoDBmodel.fromJson(e)).toList();
     return mongodbOut;
   }
 }

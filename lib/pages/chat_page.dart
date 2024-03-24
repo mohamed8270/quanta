@@ -93,33 +93,46 @@ class _ChatPageState extends State<ChatPage> {
             ),
           ),
           alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                decoration: const BoxDecoration(
-                  color: qwhite,
-                ),
-                width: screenSize.width * 0.87,
-                child: FloatingActionButton(
-                  backgroundColor: qwhite,
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  focusElevation: 0,
-                  hoverElevation: 0,
-                  elevation: 0,
-                  highlightElevation: 0,
-                  disabledElevation: 0,
-                  isExtended: true,
-                  tooltip: 'Chat Now',
-                  onPressed: () {},
-                  child: UserInputBox(
-                    onChanged: handlerPromptChange,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: qwhite,
+                    ),
+                    width: screenSize.width * 0.87,
+                    child: FloatingActionButton(
+                      backgroundColor: qwhite,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      focusElevation: 0,
+                      hoverElevation: 0,
+                      elevation: 0,
+                      highlightElevation: 0,
+                      disabledElevation: 0,
+                      isExtended: true,
+                      tooltip: 'Chat Now',
+                      onPressed: () {},
+                      child: UserInputBox(
+                        onChanged: handlerPromptChange,
+                      ),
+                    ),
                   ),
+                  SubmitButton(
+                    click: handleQueryButtonPress,
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text(
+                  'Quanta uses GenAI, Check for mistakes',
+                  style: ThemeClass.heading6,
                 ),
-              ),
-              SubmitButton(
-                click: handleQueryButtonPress,
-              ),
+              )
             ],
           ),
         ),

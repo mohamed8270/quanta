@@ -37,8 +37,8 @@ class _ShimmerLoadingAnimationState extends State<ShimmerLoadingAnimation>
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Shimmer.fromColors(
-      baseColor: qgrey,
-      highlightColor: qblue,
+      baseColor: qgrey.withOpacity(0.4),
+      highlightColor: qyellow,
       direction: ShimmerDirection.ltr,
       period: const Duration(seconds: 2),
       child: Column(

@@ -30,7 +30,7 @@ class SubmitButton extends StatelessWidget {
           'https://www.svgrepo.com/show/499642/send.svg',
           height: 26,
           width: 26,
-          color: qblue,
+          color: qyellow,
         ),
       ),
     );

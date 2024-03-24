@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
         preferredSize: Size.fromHeight(50),
         child: AppBarWidget(
           leading: 'https://www.svgrepo.com/show/447866/ai-mi-algorithm.svg',
-          leadingcolor: qblue,
+          leadingcolor: qblack,
           txt: 'Quanta',
           actions: [],
         ),
@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.toNamed('chatpage'),
-        backgroundColor: qblue,
+        backgroundColor: qblack,
         elevation: 0,
         child: SvgPicture.network(
           'https://www.svgrepo.com/show/529062/magic-stick-3.svg',
@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
             ShaderMask(
               shaderCallback: (bounds) => const LinearGradient(
                 colors: [
-                  qblue,
+                  qyellow,
                   qorange,
                 ],
                 tileMode: TileMode.mirror,

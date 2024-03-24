@@ -15,7 +15,7 @@ class Wrapper extends StatelessWidget {
       title: 'Quanta',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: qblue),
+        colorScheme: ColorScheme.fromSeed(seedColor: qyellow),
         useMaterial3: true,
       ),
       routes: {

@@ -36,7 +36,7 @@ class ChatPageAppBar extends StatelessWidget {
             'https://www.svgrepo.com/show/488764/arrow-back.svg',
             height: 16,
             width: 16,
-            color: qblue,
+            color: qyellow,
           ),
         ),
       ),
@@ -44,15 +44,11 @@ class ChatPageAppBar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Quanta",
-            style: GoogleFonts.poppins(
-              fontSize: 24,
-              fontWeight: FontWeight.w700,
-              color: qblack,
-            ),
+            "Quanta GenAI",
+            style: ThemeClass.heading0,
           ),
           Text(
-            "Unleash the power of AI conversation",
+            "Unleash the power of AI conversation (Powered by GenAI)",
             style: GoogleFonts.poppins(
               fontSize: 7,
               fontWeight: FontWeight.w500,

@@ -15,7 +15,7 @@ class GreetingSection extends StatelessWidget {
         ShaderMask(
           shaderCallback: (bounds) => const LinearGradient(
             colors: [
-              qblue,
+              qyellow,
               qorange,
             ],
             tileMode: TileMode.mirror,

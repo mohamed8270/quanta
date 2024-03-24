@@ -57,6 +57,12 @@ class ThemeClass {
     color: qblack,
   );
 
+  static TextStyle heading6 = GoogleFonts.poppins(
+    fontSize: 8,
+    fontWeight: FontWeight.w500,
+    color: qdark1.withOpacity(0.5),
+  );
+
   // Padding
   static EdgeInsets padding0 =
       const EdgeInsets.only(right: 10, left: 10, top: 20);

@@ -19,7 +19,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   final screens = [
     const HomePage(),
-    const ProductPage(),
+    ProductPage(),
   ];
 
   @override
