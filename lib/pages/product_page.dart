@@ -13,6 +13,7 @@ class ProductPage extends StatelessWidget {
         preferredSize: Size.fromHeight(50),
         child: AppBarWidget(
           leading: 'https://www.svgrepo.com/show/448823/product-blink.svg',
+          leadingcolor: qyellow,
           txt: 'Amazon Products',
           actions: [],
         ),

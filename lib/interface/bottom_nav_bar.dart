@@ -62,7 +62,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             BottomNavigationBarItem(
               icon: SvgPicture.network(
                 'https://www.svgrepo.com/show/524643/home-angle-2.svg',
-                color: qblack.withOpacity(0.4),
+                color: qblack.withOpacity(0.3),
               ),
               activeIcon: SvgPicture.network(
                 'https://www.svgrepo.com/show/525378/home-angle-2.svg',
@@ -75,7 +75,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 'https://www.svgrepo.com/show/475634/amazon-color.svg',
                 height: 24,
                 width: 24,
-                color: qblack.withOpacity(0.4),
+                color: qblack.withOpacity(0.3),
               ),
               activeIcon: SvgPicture.network(
                 'https://www.svgrepo.com/show/475634/amazon-color.svg',

@@ -18,6 +18,7 @@ class HomePage extends StatelessWidget {
         preferredSize: Size.fromHeight(50),
         child: AppBarWidget(
           leading: 'https://www.svgrepo.com/show/447866/ai-mi-algorithm.svg',
+          leadingcolor: qblue,
           txt: 'Quanta',
           actions: [],
         ),

@@ -9,9 +9,11 @@ class AppBarWidget extends StatelessWidget {
       {super.key,
       required this.leading,
       required this.txt,
-      required this.actions});
+      required this.actions,
+      required this.leadingcolor});
 
   final String leading;
+  final Color leadingcolor;
   final String txt;
   final List<Widget> actions;
 
@@ -38,7 +40,7 @@ class AppBarWidget extends StatelessWidget {
           leading,
           height: 16,
           width: 16,
-          color: qblue,
+          color: leadingcolor,
         ),
       ),
       title: Text(

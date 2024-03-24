@@ -10,7 +10,6 @@ import 'package:quanta/interface/submit_button.dart';
 import 'package:quanta/interface/user_input_box.dart';
 import 'package:quanta/constants/theme.dart';
 import 'package:http/http.dart' as http;
-import 'package:shimmer/shimmer.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
