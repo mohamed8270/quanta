@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quanta/constants/theme.dart';
-import 'package:quanta/pages/home_page.dart';
-import 'package:quanta/pages/product_page.dart';
+import 'package:quanta/views/user_pages/home_page.dart';
+import 'package:quanta/views/user_pages/product_page.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});

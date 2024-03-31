@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quanta/components/appbar_widget.dart';
+import 'package:quanta/components/widgets/appbar_widget.dart';
 import 'package:quanta/constants/theme.dart';
-import 'package:quanta/interface/shimmer_loading.dart';
+import 'package:quanta/interface/views/shimmer_loading.dart';
 import 'package:quanta/service/database/mongo_db.dart';
 import 'package:quanta/service/models/mongodb_models.dart';
 

@@ -5,9 +5,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:quanta/components/greeting_sectiomn.dart';
 import 'package:quanta/components/chat_page_appbar.dart';
-import 'package:quanta/interface/shimmer_loading.dart';
-import 'package:quanta/interface/submit_button.dart';
-import 'package:quanta/interface/user_input_box.dart';
+import 'package:quanta/interface/views/shimmer_loading.dart';
+import 'package:quanta/interface/reusable/submit_button.dart';
+import 'package:quanta/interface/reusable/user_input_box.dart';
 import 'package:quanta/constants/theme.dart';
 import 'package:http/http.dart' as http;
 

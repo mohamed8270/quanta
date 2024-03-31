@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quanta/components/appbar_widget.dart';
+import 'package:quanta/components/widgets/appbar_widget.dart';
 import 'package:quanta/constants/theme.dart';
 
 class HomePage extends StatelessWidget {
