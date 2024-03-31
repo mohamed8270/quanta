@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quanta/components/widgets/appbar_widget.dart';
 import 'package:quanta/constants/theme.dart';
-import 'package:quanta/interface/views/shimmer_loading.dart';
+import 'package:quanta/interface/views/animations/shimmer_loading.dart';
 import 'package:quanta/service/database/mongo_db.dart';
 import 'package:quanta/service/models/mongodb_models.dart';
+import 'package:quanta/views/user_pages/products_page/product_repo/products_card.dart';
 
 class ProductPage extends StatelessWidget {
   ProductPage({super.key});
@@ -13,7 +14,7 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.sizeOf(context);
+    // final screenSize = MediaQuery.sizeOf(context);
     return Scaffold(
       backgroundColor: qwhite,
       appBar: const PreferredSize(
@@ -40,16 +41,20 @@ class ProductPage extends StatelessWidget {
                 itemCount: mongoData!.length,
                 itemBuilder: (context, index) {
                   final data = mongoData[index];
-                  return Text(
-                    data.title.toString(),
-                    style: ThemeClass.heading4,
+                  return ProductCardRepo(
+                    imgurl: data.image.toString(),
+                    title: data.title.toString(),
+                    offer: data.discountPercentage.toString(),
+                    price: data.currentPrice.toString(),
+                    brand: data.brand.toString(),
+                    symbol: data.currency.toString(),
                   );
                 },
               );
             } else if (snapshot.hasError) {
               return Text(snapshot.error.toString());
             }
-            return Text('');
+            return const Text('Server Busy');
           },
         ),
       ),
