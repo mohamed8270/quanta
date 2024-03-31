@@ -10,7 +10,7 @@ Future<void> main() async {
   Get.put(ConnectivityController());
   SystemChrome.setEnabledSystemUIMode(
     SystemUiMode.manual,
-    overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom],
+    overlays: [SystemUiOverlay.top],
   );
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
