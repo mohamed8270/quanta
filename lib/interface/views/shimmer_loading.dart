@@ -21,23 +21,23 @@ class _ShimmerLoadingAnimationState extends State<ShimmerLoadingAnimation>
   void initState() {
     super.initState();
 
-    // Create separate animations for each container
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1500), // Adjust duration as needed
+      duration: const Duration(milliseconds: 1500),
     );
     _animations = List.generate(
-        4,
-        (index) => Tween<double>(begin: 0.0, end: 1.0).animate(
-              CurvedAnimation(
-                parent: _animationController,
-                curve: Interval(
-                  0.25 * index, // Start each animation with 25% delay
-                  0.25 * (index + 1),
-                  curve: Curves.easeInOut,
-                ),
-              ),
-            ));
+      4,
+      (index) => Tween<double>(begin: 0.0, end: 1.0).animate(
+        CurvedAnimation(
+          parent: _animationController,
+          curve: Interval(
+            0.25 * index,
+            0.25 * (index + 1),
+            curve: Curves.easeInOut,
+          ),
+        ),
+      ),
+    );
 
     _animationController.repeat(reverse: true);
   }
