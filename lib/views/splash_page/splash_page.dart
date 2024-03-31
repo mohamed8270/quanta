@@ -17,6 +17,9 @@ class _SplashPageState extends State<SplashPage> {
   final ConnectivityController networkConnectivity =
       Get.find<ConnectivityController>();
 
+  final String url =
+      'https://www.svgrepo.com/show/379983/connection-signal-wifi.svg';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +39,7 @@ class _SplashPageState extends State<SplashPage> {
                 ThemeClass.space1,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     networkConnectivity.connectionStatus.value ==
                             ConnectionState.none
@@ -49,12 +53,17 @@ class _SplashPageState extends State<SplashPage> {
                               strokeWidth: 2,
                             ),
                           )
-                        : const SizedBox(),
+                        : SvgPicture.network(
+                            url,
+                            height: 14,
+                            width: 14,
+                            color: qgreen,
+                          ),
                     ThemeClass.space1,
                     Text(
                       networkConnectivity.connectionStatus.value ==
                               ConnectionState.none
-                          ? 'Checking network'
+                          ? 'Checking Network'
                           : 'Connected',
                       style: ThemeClass.heading5,
                     ),

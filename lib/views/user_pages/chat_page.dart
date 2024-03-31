@@ -70,6 +70,10 @@ class _ChatPageState extends State<ChatPage> {
     return 0;
   }
 
+  String responseBoldCheck(String boldtxt) {
+    return boldtxt.replaceAll('*', '');
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.sizeOf(context);
@@ -152,7 +156,7 @@ class _ChatPageState extends State<ChatPage> {
                 child: isLoading
                     ? const ShimmerLoadingAnimation()
                     : Text(
-                        response,
+                        responseBoldCheck(response),
                         textAlign: TextAlign.justify,
                         style: ThemeClass.heading4,
                       ),
