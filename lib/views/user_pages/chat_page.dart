@@ -168,4 +168,59 @@ class _ChatPageState extends State<ChatPage> {
       ),
     );
   }
+
+  // List<TextSpan> _parseBoldAndCode(String text) {
+  //   final List<TextSpan> spans = [];
+  //   int start = 0;
+  //   int end;
+  //   bool isCode = false;
+  //   bool isBold = false;
+
+  //   if (text.isEmpty) return spans; // Add this line
+
+  //   for (int i = 0; i < text.length; i++) {
+  //     if (text[i] == '`') {
+  //       end = i;
+  //       spans.add(TextSpan(text: text.substring(start, end)));
+  //       start = end + 1;
+  //       isCode = !isCode;
+  //     } else if (text[i] == '*' && i + 1 < text.length && text[i + 1] == '*') {
+  //       end = i;
+  //       spans.add(TextSpan(text: text.substring(start, end)));
+  //       start = end + 2;
+  //       isBold = !isBold;
+  //       i++; // Skip the second asterisk
+  //     }
+
+  //     if (isCode) {
+  //       int codeEnd = text.indexOf('`', start);
+  //       if (codeEnd != -1) {
+  //         spans.add(TextSpan(
+  //           text: text.substring(start, codeEnd),
+  //           style: const TextStyle(fontFamily: 'Courier'),
+  //         ));
+  //         start = codeEnd + 1;
+  //       } else {
+  //         spans.add(TextSpan(text: text.substring(start)));
+  //         start = text.length;
+  //       }
+  //     } else if (isBold) {
+  //       int boldEnd = text.indexOf('**', start);
+  //       if (boldEnd != -1) {
+  //         spans.add(TextSpan(
+  //           text: text.substring(start, boldEnd),
+  //           style: const TextStyle(fontWeight: FontWeight.bold),
+  //         ));
+  //         start = boldEnd + 2;
+  //       } else {
+  //         spans.add(TextSpan(text: text.substring(start)));
+  //         start = text.length;
+  //       }
+  //     }
+  //   }
+
+  //   spans.add(TextSpan(text: text.substring(start)));
+
+  //   return spans;
+  // }
 }
