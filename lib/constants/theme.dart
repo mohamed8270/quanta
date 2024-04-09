@@ -64,7 +64,7 @@ class ThemeClass {
   );
 
   static TextStyle brandName = GoogleFonts.poppins(
-    fontSize: 10,
+    fontSize: 8,
     fontWeight: FontWeight.w500,
     color: qdark1.withOpacity(0.5),
   );
@@ -73,6 +73,24 @@ class ThemeClass {
     fontSize: 10,
     fontWeight: FontWeight.w500,
     color: qwhite,
+  );
+
+  static TextStyle symbolTxt = GoogleFonts.poppins(
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+    color: qblack,
+  );
+
+  static TextStyle priceTxt = GoogleFonts.poppins(
+    fontSize: 22,
+    fontWeight: FontWeight.w500,
+    color: qblack,
+  );
+
+  static TextStyle titleTxt = GoogleFonts.poppins(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: qblack,
   );
 
   // Padding

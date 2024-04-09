@@ -38,7 +38,7 @@ class ProductCardRepo extends StatelessWidget {
       child: InkWell(
         onTap: click,
         child: Container(
-          height: screenSize.height * 0.38,
+          height: screenSize.height * 0.2,
           width: screenSize.width * 0.95,
           decoration: BoxDecoration(
             color: qwhite,
@@ -48,12 +48,13 @@ class ProductCardRepo extends StatelessWidget {
           alignment: Alignment.center,
           child: Padding(
             padding: const EdgeInsets.all(10),
-            child: Column(
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   height: screenSize.height * 0.25,
-                  width: screenSize.width * 0.85,
+                  width: screenSize.width * 0.35,
                   decoration: BoxDecoration(
                     color: qwhite,
                     borderRadius: BorderRadius.circular(10),
@@ -65,23 +66,38 @@ class ProductCardRepo extends StatelessWidget {
                   ),
                 ),
                 ThemeClass.space1,
-                SizedBox(
-                  width: screenSize.width * 0.85,
-                  child: Text(
-                    title,
-                    overflow: TextOverflow.ellipsis,
-                    style: ThemeClass.heading3,
-                  ),
-                ),
-                Text(
-                  brand,
-                  style: ThemeClass.brandName,
-                ),
-                ThemeClass.space1,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    SizedBox(
+                      width: screenSize.width * 0.5,
+                      child: Text(
+                        title,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 3,
+                        style: ThemeClass.titleTxt,
+                      ),
+                    ),
+                    Text(
+                      brand,
+                      style: ThemeClass.brandName,
+                    ),
+                    ThemeClass.space1,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          symbol,
+                          style: ThemeClass.symbolTxt,
+                        ),
+                        Text(
+                          price,
+                          style: ThemeClass.priceTxt,
+                        ),
+                      ],
+                    ),
+                    ThemeClass.space0,
                     FittedBox(
                       fit: BoxFit.fitWidth,
                       child: Container(
@@ -100,10 +116,6 @@ class ProductCardRepo extends StatelessWidget {
                           ),
                         ),
                       ),
-                    ),
-                    Text(
-                      '$symbol $price',
-                      style: ThemeClass.heading4,
                     ),
                   ],
                 ),
