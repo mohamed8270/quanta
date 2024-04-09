@@ -22,7 +22,7 @@ class _MongoDataShimmerState extends State<MongoDataShimmer>
       duration: const Duration(milliseconds: 1500),
     );
     _animations = List.generate(
-      2,
+      3,
       (index) => Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
           parent: _animationController,
@@ -56,7 +56,7 @@ class _MongoDataShimmerState extends State<MongoDataShimmer>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: List.generate(
-          2,
+          3,
           (index) => AnimatedBuilder(
             animation: _animations[index],
             builder: (context, child) {
@@ -69,34 +69,50 @@ class _MongoDataShimmerState extends State<MongoDataShimmer>
               padding: const EdgeInsets.only(bottom: 10),
               child: Padding(
                 padding: const EdgeInsets.all(10),
-                child: Column(
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      height: screenSize.height * 0.2,
-                      width: screenSize.width * 0.95,
+                      height: screenSize.height * 0.15,
+                      width: screenSize.width * 0.35,
                       decoration: BoxDecoration(
                         color: qgrey,
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                     ThemeClass.space1,
-                    Container(
-                      height: screenSize.height * 0.02,
-                      width: screenSize.width * 0.85,
-                      decoration: BoxDecoration(
-                        color: qgrey,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    ThemeClass.space0,
-                    Container(
-                      height: screenSize.height * 0.02,
-                      width: screenSize.width * 0.5,
-                      decoration: BoxDecoration(
-                        color: qgrey,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: screenSize.height * 0.02,
+                          width: screenSize.width * 0.5,
+                          decoration: BoxDecoration(
+                            color: qgrey,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        ThemeClass.space0,
+                        Container(
+                          height: screenSize.height * 0.02,
+                          width: screenSize.width * 0.4,
+                          decoration: BoxDecoration(
+                            color: qgrey,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        ThemeClass.space1,
+                        Container(
+                          height: screenSize.height * 0.02,
+                          width: screenSize.width * 0.3,
+                          decoration: BoxDecoration(
+                            color: qgrey,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
