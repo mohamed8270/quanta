@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quanta/components/widgets/appbar_widget.dart';
 import 'package:quanta/constants/theme.dart';
-import 'package:quanta/interface/views/animations/mongo_data_shimmer.dart';
+import 'package:quanta/interface/views/animations/linear_progess_shimmer.dart';
+// import 'package:quanta/interface/views/animations/mongo_data_shimmer.dart';
 import 'package:quanta/service/database/mongo_db.dart';
 import 'package:quanta/service/models/mongodb_models.dart';
+import 'package:quanta/views/user_pages/products_page/product_detail_page.dart';
 import 'package:quanta/views/user_pages/products_page/product_repo/products_card.dart';
 
 class ProductPage extends StatelessWidget {
@@ -26,38 +28,36 @@ class ProductPage extends StatelessWidget {
           actions: [],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(right: 10, left: 10),
-        child: FutureBuilder<List<MongoDBmodel>>(
-          future: mongoDBclass.fetchMongoDB(),
-          builder: (BuildContext context,
-              AsyncSnapshot<List<MongoDBmodel>> snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const MongoDataShimmer();
-            } else if (snapshot.hasData) {
-              List<MongoDBmodel>? mongoData = snapshot.data;
-              return ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: mongoData!.length,
-                itemBuilder: (context, index) {
-                  final data = mongoData[index];
-                  return ProductCardRepo(
-                    click: () {},
-                    imgurl: data.image.toString(),
-                    title: data.title.toString(),
-                    offer: data.discountPercentage.toString(),
-                    price: data.currentPrice.toString(),
-                    brand: data.brand.toString(),
-                    symbol: data.currency.toString(),
-                  );
-                },
-              );
-            } else if (snapshot.hasError) {
-              return Text(snapshot.error.toString());
-            }
-            return const Text('Server Busy');
-          },
-        ),
+      body: FutureBuilder<List<MongoDBmodel>>(
+        future: mongoDBclass.fetchMongoDB(),
+        builder:
+            (BuildContext context, AsyncSnapshot<List<MongoDBmodel>> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const LinearProgressShimmer();
+          } else if (snapshot.hasData) {
+            List<MongoDBmodel>? mongoData = snapshot.data;
+            return ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: mongoData!.length,
+              itemBuilder: (context, index) {
+                final data = mongoData[index];
+                return ProductCardRepo(
+                  click: () =>
+                      Get.to(ProductDetailPage(id: data.id.toString())),
+                  imgurl: data.image.toString(),
+                  title: data.title.toString(),
+                  offer: data.discountPercentage.toString(),
+                  price: data.currentPrice.toString(),
+                  brand: data.brand.toString(),
+                  symbol: data.currency.toString(),
+                );
+              },
+            );
+          } else if (snapshot.hasError) {
+            return Text(snapshot.error.toString());
+          }
+          return const Text('Server Busy');
+        },
       ),
     );
   }

@@ -91,7 +91,7 @@ class ThemeClass {
     fontSize: 12,
     fontWeight: FontWeight.w500,
     color: qblack,
-    height: 0.6,
+    height: 1.5,
   );
 
   // Padding

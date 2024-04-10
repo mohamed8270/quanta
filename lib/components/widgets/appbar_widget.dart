@@ -5,17 +5,20 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quanta/constants/theme.dart';
 
 class AppBarWidget extends StatelessWidget {
-  const AppBarWidget(
-      {super.key,
-      required this.leading,
-      required this.txt,
-      required this.actions,
-      required this.leadingcolor});
+  const AppBarWidget({
+    super.key,
+    required this.leading,
+    required this.txt,
+    required this.actions,
+    required this.leadingcolor,
+    this.leadingClick,
+  });
 
   final String leading;
   final Color leadingcolor;
   final String txt;
   final List<Widget> actions;
+  final VoidCallback? leadingClick;
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +39,14 @@ class AppBarWidget extends StatelessWidget {
       automaticallyImplyLeading: false,
       leading: Padding(
         padding: const EdgeInsets.all(12),
-        child: SvgPicture.network(
-          leading,
-          height: 16,
-          width: 16,
-          color: leadingcolor,
+        child: GestureDetector(
+          onTap: leadingClick,
+          child: SvgPicture.network(
+            leading,
+            height: 16,
+            width: 16,
+            color: leadingcolor,
+          ),
         ),
       ),
       title: Text(

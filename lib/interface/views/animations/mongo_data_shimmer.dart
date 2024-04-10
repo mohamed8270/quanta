@@ -66,56 +66,53 @@ class _MongoDataShimmerState extends State<MongoDataShimmer>
               );
             },
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: screenSize.height * 0.15,
-                      width: screenSize.width * 0.35,
-                      decoration: BoxDecoration(
-                        color: qgrey,
-                        borderRadius: BorderRadius.circular(10),
+              padding: const EdgeInsets.all(15),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: screenSize.height * 0.15,
+                    width: screenSize.width * 0.35,
+                    decoration: BoxDecoration(
+                      color: qgrey,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  ThemeClass.space1,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: screenSize.height * 0.02,
+                        width: screenSize.width * 0.5,
+                        decoration: BoxDecoration(
+                          color: qgrey,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
-                    ),
-                    ThemeClass.space1,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: screenSize.height * 0.02,
-                          width: screenSize.width * 0.5,
-                          decoration: BoxDecoration(
-                            color: qgrey,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
+                      ThemeClass.space1,
+                      Container(
+                        height: screenSize.height * 0.02,
+                        width: screenSize.width * 0.5,
+                        decoration: BoxDecoration(
+                          color: qgrey,
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        ThemeClass.space1,
-                        Container(
-                          height: screenSize.height * 0.02,
-                          width: screenSize.width * 0.5,
-                          decoration: BoxDecoration(
-                            color: qgrey,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
+                      ),
+                      ThemeClass.space1,
+                      Container(
+                        height: screenSize.height * 0.02,
+                        width: screenSize.width * 0.3,
+                        decoration: BoxDecoration(
+                          color: qgrey,
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        ThemeClass.space1,
-                        Container(
-                          height: screenSize.height * 0.02,
-                          width: screenSize.width * 0.3,
-                          decoration: BoxDecoration(
-                            color: qgrey,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
