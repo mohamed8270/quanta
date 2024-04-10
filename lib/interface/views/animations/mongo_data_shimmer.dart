@@ -94,10 +94,10 @@ class _MongoDataShimmerState extends State<MongoDataShimmer>
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        ThemeClass.space0,
+                        ThemeClass.space1,
                         Container(
                           height: screenSize.height * 0.02,
-                          width: screenSize.width * 0.4,
+                          width: screenSize.width * 0.5,
                           decoration: BoxDecoration(
                             color: qgrey,
                             borderRadius: BorderRadius.circular(10),
