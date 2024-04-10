@@ -94,6 +94,18 @@ class ThemeClass {
     height: 1.5,
   );
 
+  static TextStyle detailPriceTxt = GoogleFonts.poppins(
+    fontSize: 32,
+    fontWeight: FontWeight.w500,
+    color: qblack,
+  );
+
+  static TextStyle detailDiscountTxt = GoogleFonts.poppins(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    color: qwhite,
+  );
+
   // Padding
   static EdgeInsets padding0 =
       const EdgeInsets.only(right: 10, left: 10, top: 20);
