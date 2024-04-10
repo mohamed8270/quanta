@@ -34,7 +34,7 @@ class ProductCardRepo extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 15),
+      padding: const EdgeInsets.only(top: 10),
       child: InkWell(
         onTap: click,
         borderRadius: BorderRadius.circular(10),

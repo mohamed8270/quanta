@@ -18,4 +18,14 @@ class MongoDBclass extends GetxController {
         mongodbres.map((dynamic e) => MongoDBmodel.fromJson(e)).toList();
     return mongodbOut;
   }
+
+  Future<ProductDetailModel> fetchProductDetail(String id) async {
+    http.Response response = await http.get(
+      Uri.tryParse('https://server-b848.onrender.com/products/details/$id')!,
+    );
+
+    final productRes = jsonDecode(response.body);
+    final productDetailById = ProductDetailModel.fromJson(productRes);
+    return productDetailById;
+  }
 }

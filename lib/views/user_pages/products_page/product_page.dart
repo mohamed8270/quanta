@@ -27,7 +27,7 @@ class ProductPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(right: 10, left: 10, top: 20),
+        padding: const EdgeInsets.only(right: 10, left: 10),
         child: FutureBuilder<List<MongoDBmodel>>(
           future: mongoDBclass.fetchMongoDB(),
           builder: (BuildContext context,
