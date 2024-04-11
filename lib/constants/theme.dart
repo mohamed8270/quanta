@@ -106,6 +106,19 @@ class ThemeClass {
     color: qwhite,
   );
 
+  static TextStyle detailDiscountPercentageTxt = GoogleFonts.poppins(
+    fontSize: 32,
+    fontWeight: FontWeight.w400,
+    color: qred,
+  );
+
+  static TextStyle detailMrpTxt = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: qblack,
+    decoration: TextDecoration.lineThrough,
+  );
+
   // Padding
   static EdgeInsets padding0 =
       const EdgeInsets.only(right: 10, left: 10, top: 20);

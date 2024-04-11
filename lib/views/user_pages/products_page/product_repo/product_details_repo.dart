@@ -72,7 +72,7 @@ class ProductDetailsRepo extends StatelessWidget {
             ),
             ThemeClass.space1,
             Container(
-              height: screenSize.height * 0.02,
+              height: screenSize.height * 0.03,
               width: screenSize.width * 0.2,
               decoration: const BoxDecoration(color: qred),
               alignment: Alignment.center,
@@ -93,10 +93,15 @@ class ProductDetailsRepo extends StatelessWidget {
                 ),
               ),
             ),
-            ThemeClass.space1,
+            ThemeClass.space2,
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Text(
+                  '-$discountPercentage%',
+                  style: ThemeClass.detailDiscountPercentageTxt,
+                ),
+                ThemeClass.space2,
                 Text(
                   currency,
                   style: ThemeClass.symbolTxt,
@@ -108,9 +113,18 @@ class ProductDetailsRepo extends StatelessWidget {
               ],
             ),
             ThemeClass.space0,
-            Text(
-              'M.R.P: ₹$originalPrice',
-              style: ThemeClass.heading5,
+            Row(
+              children: [
+                Text(
+                  'M.R.P',
+                  style: ThemeClass.heading3,
+                ),
+                ThemeClass.space0,
+                Text(
+                  '₹ $originalPrice',
+                  style: ThemeClass.detailMrpTxt,
+                ),
+              ],
             ),
             ThemeClass.space1,
             Text(
