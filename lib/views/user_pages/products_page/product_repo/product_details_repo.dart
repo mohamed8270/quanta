@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:quanta/constants/theme.dart';
+import 'package:quanta/interface/reusable/expandable_text.dart';
 import 'package:quanta/views/user_pages/products_page/product_repo/product_price_card.dart';
 
 class ProductDetailsRepo extends StatelessWidget {
@@ -201,10 +202,15 @@ class ProductDetailsRepo extends StatelessWidget {
             ThemeClass.space3,
             Text('Description', style: ThemeClass.heading3),
             ThemeClass.space0,
-            Text(
-              cleanDescription(description),
-              textAlign: TextAlign.justify,
-              style: ThemeClass.detailDescriptionTxt,
+            // Text(
+            //   cleanDescription(description),
+            //   textAlign: TextAlign.justify,
+            //   style: ThemeClass.detailDescriptionTxt,
+            // ),
+            ExpandableText(
+              maxLines: 800,
+              minLines: 7,
+              text: cleanDescription(description),
             ),
             const Gap(100),
           ],
