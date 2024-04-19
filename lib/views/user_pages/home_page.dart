@@ -3,15 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:quanta/components/widgets/appbar_widget.dart';
 import 'package:quanta/constants/theme.dart';
+import 'package:quanta/interface/reusable/user_input_box.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController searchController = TextEditingController();
     return Scaffold(
       backgroundColor: qwhite,
       appBar: const PreferredSize(
@@ -41,23 +42,23 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(ThemeClass.heroGreeting, style: ThemeClass.heading6),
+            Text(ThemeClass.heroGreeting2, style: ThemeClass.heroGreetingTxt),
             ShaderMask(
-              shaderCallback: (bounds) => const LinearGradient(
-                colors: [
-                  qyellow,
-                  qorange,
-                ],
-                tileMode: TileMode.mirror,
-              ).createShader(bounds),
-              child: Text(
-                "Hello, Mohamed",
-                style: GoogleFonts.poppins(
-                  fontSize: 36,
-                  fontWeight: FontWeight.w600,
-                  color: qwhite,
-                ),
-              ),
-            ),
+                shaderCallback: (bounds) => const LinearGradient(
+                      colors: [qorange, qyellow],
+                      tileMode: TileMode.mirror,
+                    ).createShader(bounds),
+                child: Text(ThemeClass.heroGreeting3,
+                    style: ThemeClass.heroGreetingTxt2)),
+            ThemeClass.space0,
+            Text(ThemeClass.heroGreeting4, style: ThemeClass.heading5),
+            ThemeClass.space1,
+            UserSearchInput(
+              txt: 'Enter amazon link',
+              controller: searchController,
+              click: () {},
+            )
           ],
         ),
       ),

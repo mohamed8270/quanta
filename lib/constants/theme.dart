@@ -21,6 +21,24 @@ const Color qyellow = Color(0xFFFF9900);
 
 // Theme class
 class ThemeClass {
+  static String heroGreeting = 'Start harvesting your money here ➡️';
+  static String heroGreeting2 = 'Make a wise decission with';
+  static String heroGreeting3 = 'Info Harvest & Quanta';
+  static String heroGreeting4 =
+      'The powerful tool present in the market for the user to make price decission well, Unlock the potential of saving money over every order you make!';
+
+  static TextStyle heroGreetingTxt = GoogleFonts.poppins(
+    fontSize: 38,
+    fontWeight: FontWeight.w700,
+    color: qblack,
+  );
+
+  static TextStyle heroGreetingTxt2 = GoogleFonts.poppins(
+    fontSize: 38,
+    fontWeight: FontWeight.w700,
+    color: qwhite,
+  );
+
   static TextStyle heading0 = GoogleFonts.poppins(
     fontSize: 24,
     fontWeight: FontWeight.w700,
