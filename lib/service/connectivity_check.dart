@@ -1,38 +1,43 @@
-import 'dart:async';
+// ignore_for_file: deprecated_member_use
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:quanta/constants/theme.dart';
 
 class ConnectivityController extends GetxController {
-  static ConnectivityController get to => Get.find<ConnectivityController>();
-
   final Connectivity _connectivity = Connectivity();
-  final Rx<ConnectivityResult> connectionStatus = Rx(ConnectivityResult.none);
 
   @override
   void onInit() {
     super.onInit();
-    checkConnectivity();
-    connectionStatus.listen((connectivity) {
-      if (connectivity != ConnectivityResult.none) {
-        navigateToHomePage();
+    _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+  }
+
+  void _updateConnectionStatus(ConnectivityResult connectivityResult) {
+    if (connectivityResult == ConnectivityResult.none) {
+      Get.rawSnackbar(
+        messageText: Text(
+          'Please connect to internet!',
+          style: ThemeClass.buttonTxt,
+        ),
+        isDismissible: false,
+        duration: const Duration(days: 1),
+        backgroundColor: qred,
+        icon: SvgPicture.network(
+          'https://www.svgrepo.com/show/379983/connection-signal-wifi.svg',
+          height: 16,
+          width: 16,
+          color: qwhite,
+        ),
+        margin: EdgeInsets.zero,
+        snackStyle: SnackStyle.GROUNDED,
+      );
+    } else {
+      if (Get.isSnackbarOpen) {
+        Get.closeCurrentSnackbar();
       }
-    });
-  }
-
-  Future<void> checkConnectivity() async {
-    final List<ConnectivityResult> connectivityResults =
-        await (_connectivity.checkConnectivity());
-    ConnectivityResult connectionStatus = connectivityResults.isNotEmpty
-        ? connectivityResults.first
-        : ConnectivityResult.none;
-
-    this.connectionStatus.value = connectionStatus;
-  }
-
-  void navigateToHomePage() {
-    Timer(const Duration(seconds: 20), () {
-      Get.toNamed("bottomnavbar");
-    });
+    }
   }
 }

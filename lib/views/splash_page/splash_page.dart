@@ -1,10 +1,12 @@
 // ignore_for_file: deprecated_member_use, unrelated_type_equality_checks
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:quanta/components/internet_error_page.dart';
 import 'package:quanta/constants/theme.dart';
-import 'package:quanta/service/connectivity_check.dart';
+import 'package:quanta/interface/views/bottom_nav_bar.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -14,11 +16,22 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  final ConnectivityController networkConnectivity =
-      Get.find<ConnectivityController>();
+  String url = 'https://www.svgrepo.com/show/379983/connection-signal-wifi.svg';
 
-  final String url =
-      'https://www.svgrepo.com/show/379983/connection-signal-wifi.svg';
+  @override
+  void initState() {
+    super.initState();
+    checkInternetAndNavigate();
+  }
+
+  Future<void> checkInternetAndNavigate() async {
+    final result = await Connectivity().checkConnectivity();
+    if (result == ConnectivityResult.none) {
+      Get.offAll(() => const InternetErrorPage());
+    } else {
+      Get.offAll(() => const BottomNavBar());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,51 +39,11 @@ class _SplashPageState extends State<SplashPage> {
       backgroundColor: qwhite,
       body: SafeArea(
         child: Center(
-          child: Obx(
-            () => Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.network(
-                  'https://www.svgrepo.com/show/303264/amazon-2-logo.svg',
-                  height: 140,
-                  width: 140,
-                  // color: qblue,
-                ),
-                ThemeClass.space1,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    networkConnectivity.connectionStatus.value ==
-                            ConnectionState.none
-                        ? const SizedBox(
-                            height: 18,
-                            width: 18,
-                            child: CircularProgressIndicator(
-                              color: qyellow,
-                              strokeAlign: BorderSide.strokeAlignCenter,
-                              strokeCap: StrokeCap.round,
-                              strokeWidth: 2,
-                            ),
-                          )
-                        : SvgPicture.network(
-                            url,
-                            height: 14,
-                            width: 14,
-                            color: qgreen,
-                          ),
-                    ThemeClass.space1,
-                    Text(
-                      networkConnectivity.connectionStatus.value ==
-                              ConnectionState.none
-                          ? 'Checking Network'
-                          : 'Connected',
-                      style: ThemeClass.heading5,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+          child: SvgPicture.network(
+            'https://www.svgrepo.com/show/303264/amazon-2-logo.svg',
+            height: 140,
+            width: 140,
+            // color: qblue,
           ),
         ),
       ),
