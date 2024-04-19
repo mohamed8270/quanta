@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:quanta/constants/theme.dart';
+import 'package:quanta/views/user_pages/products_page/product_repo/product_price_card.dart';
 
 class ProductDetailsRepo extends StatelessWidget {
   const ProductDetailsRepo(
@@ -45,6 +46,11 @@ class ProductDetailsRepo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.sizeOf(context);
+
+    String cleanDescription(String des) {
+      return des.replaceAll('\n', '');
+    }
+
     return Padding(
       padding: const EdgeInsets.only(left: 10, right: 10),
       child: SingleChildScrollView(
@@ -127,10 +133,46 @@ class ProductDetailsRepo extends StatelessWidget {
               ],
             ),
             ThemeClass.space1,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ProductPriceCard(
+                  nametxt: 'Current Price',
+                  icn: 'https://www.svgrepo.com/show/498463/tag-2.svg',
+                  pricetxt: currentPrice,
+                ),
+                ThemeClass.space0,
+                ProductPriceCard(
+                  nametxt: 'Average Price',
+                  icn: 'https://www.svgrepo.com/show/527104/graph-new-up.svg',
+                  pricetxt: averagePrice,
+                ),
+              ],
+            ),
+            ThemeClass.space0,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ProductPriceCard(
+                  nametxt: 'Highest Price',
+                  icn: 'https://www.svgrepo.com/show/497735/arrow-up-2.svg',
+                  pricetxt: highestPrice,
+                ),
+                ThemeClass.space0,
+                ProductPriceCard(
+                  nametxt: 'Lowest Price',
+                  icn: 'https://www.svgrepo.com/show/497716/arrow-down-2.svg',
+                  pricetxt: lowestPrice,
+                ),
+              ],
+            ),
+            ThemeClass.space3,
+            Text('Description', style: ThemeClass.heading3),
+            ThemeClass.space0,
             Text(
-              description,
+              cleanDescription(description),
               textAlign: TextAlign.justify,
-              style: ThemeClass.heading4,
+              style: ThemeClass.detailDescriptionTxt,
             ),
           ],
         ),

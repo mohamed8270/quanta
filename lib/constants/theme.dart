@@ -76,7 +76,7 @@ class ThemeClass {
   );
 
   static TextStyle symbolTxt = GoogleFonts.poppins(
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: FontWeight.w500,
     color: qblack,
   );
@@ -117,6 +117,12 @@ class ThemeClass {
     fontWeight: FontWeight.w500,
     color: qblack,
     decoration: TextDecoration.lineThrough,
+  );
+
+  static TextStyle detailDescriptionTxt = GoogleFonts.poppins(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: qblack,
   );
 
   // Padding

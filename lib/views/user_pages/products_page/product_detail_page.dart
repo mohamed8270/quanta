@@ -26,6 +26,7 @@ class ProductDetailPage extends StatelessWidget {
           leadingClick: () => Get.back(),
         ),
       ),
+      floatingActionButton: Container(),
       body: FutureBuilder<ProductDetailModel>(
         future: mongoDBclass.fetchProductDetail(id),
         builder:
