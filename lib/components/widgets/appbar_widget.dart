@@ -37,10 +37,10 @@ class AppBarWidget extends StatelessWidget {
       centerTitle: false,
       elevation: 0,
       automaticallyImplyLeading: false,
-      leading: Padding(
-        padding: const EdgeInsets.all(12),
-        child: GestureDetector(
-          onTap: leadingClick,
+      leading: GestureDetector(
+        onTap: leadingClick,
+        child: Padding(
+          padding: const EdgeInsets.all(12),
           child: SvgPicture.network(
             leading,
             height: 16,
