@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gap/gap.dart';
 import 'package:quanta/constants/theme.dart';
 import 'package:quanta/views/user_pages/products_page/product_repo/product_price_card.dart';
 
@@ -166,6 +168,20 @@ class ProductDetailsRepo extends StatelessWidget {
                 ),
               ],
             ),
+            ThemeClass.space1,
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                height: screenSize.height * 0.06,
+                width: screenSize.width,
+                decoration: BoxDecoration(
+                  color: qyellow,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                alignment: Alignment.center,
+                child: Text('Track Now', style: ThemeClass.buttonTxt),
+              ),
+            ),
             ThemeClass.space3,
             Text('Description', style: ThemeClass.heading3),
             ThemeClass.space0,
@@ -174,6 +190,7 @@ class ProductDetailsRepo extends StatelessWidget {
               textAlign: TextAlign.justify,
               style: ThemeClass.detailDescriptionTxt,
             ),
+            const Gap(100),
           ],
         ),
       ),

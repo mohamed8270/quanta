@@ -125,6 +125,12 @@ class ThemeClass {
     color: qblack,
   );
 
+  static TextStyle buttonTxt = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: qwhite,
+  );
+
   // Padding
   static EdgeInsets padding0 =
       const EdgeInsets.only(right: 10, left: 10, top: 20);
