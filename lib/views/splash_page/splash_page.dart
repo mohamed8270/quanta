@@ -1,5 +1,7 @@
 // ignore_for_file: deprecated_member_use, unrelated_type_equality_checks
 
+import 'dart:async';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -29,7 +31,10 @@ class _SplashPageState extends State<SplashPage> {
     if (result == ConnectivityResult.none) {
       Get.offAll(() => const InternetErrorPage());
     } else {
-      Get.offAll(() => const BottomNavBar());
+      Timer(
+        const Duration(seconds: 6),
+        () => Get.offAll(() => const BottomNavBar()),
+      );
     }
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 import 'package:quanta/constants/theme.dart';
 import 'package:quanta/views/user_pages/products_page/product_repo/product_price_card.dart';
 
@@ -51,6 +52,21 @@ class ProductDetailsRepo extends StatelessWidget {
 
     String cleanDescription(String des) {
       return des.replaceAll('\n', '');
+    }
+
+    bool isNumeric(String str) {
+      if (str.isEmpty) return false;
+      return num.tryParse(str) != null;
+    }
+
+    String formatPrice(String priceString) {
+      if (isNumeric(priceString)) {
+        double price = double.parse(priceString);
+        final formatter = NumberFormat('#,###,###,###.##');
+        return formatter.format(price);
+      } else {
+        return priceString;
+      }
     }
 
     return Padding(
@@ -115,7 +131,7 @@ class ProductDetailsRepo extends StatelessWidget {
                   style: ThemeClass.symbolTxt,
                 ),
                 Text(
-                  currentPrice,
+                  formatPrice(currentPrice),
                   style: ThemeClass.detailPriceTxt,
                 ),
               ],
@@ -129,7 +145,7 @@ class ProductDetailsRepo extends StatelessWidget {
                 ),
                 ThemeClass.space0,
                 Text(
-                  '₹ $originalPrice',
+                  '₹ ${formatPrice(originalPrice)}',
                   style: ThemeClass.detailMrpTxt,
                 ),
               ],
@@ -141,13 +157,13 @@ class ProductDetailsRepo extends StatelessWidget {
                 ProductPriceCard(
                   nametxt: 'Current Price',
                   icn: 'https://www.svgrepo.com/show/498463/tag-2.svg',
-                  pricetxt: currentPrice,
+                  pricetxt: formatPrice(currentPrice),
                 ),
                 ThemeClass.space0,
                 ProductPriceCard(
                   nametxt: 'Average Price',
                   icn: 'https://www.svgrepo.com/show/527104/graph-new-up.svg',
-                  pricetxt: averagePrice,
+                  pricetxt: formatPrice(averagePrice),
                 ),
               ],
             ),
@@ -158,13 +174,13 @@ class ProductDetailsRepo extends StatelessWidget {
                 ProductPriceCard(
                   nametxt: 'Highest Price',
                   icn: 'https://www.svgrepo.com/show/497735/arrow-up-2.svg',
-                  pricetxt: highestPrice,
+                  pricetxt: formatPrice(highestPrice),
                 ),
                 ThemeClass.space0,
                 ProductPriceCard(
                   nametxt: 'Lowest Price',
                   icn: 'https://www.svgrepo.com/show/497716/arrow-down-2.svg',
-                  pricetxt: lowestPrice,
+                  pricetxt: formatPrice(lowestPrice),
                 ),
               ],
             ),
