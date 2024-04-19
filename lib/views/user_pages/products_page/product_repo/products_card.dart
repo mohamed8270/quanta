@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:quanta/constants/theme.dart';
 
 class ProductCardRepo extends StatelessWidget {
@@ -31,6 +32,21 @@ class ProductCardRepo extends StatelessWidget {
         return 'off $off%';
       }
       return 'No offer!';
+    }
+
+    bool isNumeric(String str) {
+      if (str.isEmpty) return false;
+      return num.tryParse(str) != null;
+    }
+
+    String formatPrice(String priceString) {
+      if (isNumeric(priceString)) {
+        double price = double.parse(priceString);
+        final formatter = NumberFormat('#,###,###,###.##');
+        return formatter.format(price);
+      } else {
+        return priceString;
+      }
     }
 
     return Padding(
@@ -93,7 +109,7 @@ class ProductCardRepo extends StatelessWidget {
                           style: ThemeClass.symbolTxt,
                         ),
                         Text(
-                          price,
+                          formatPrice(price),
                           style: ThemeClass.priceTxt,
                         ),
                       ],
