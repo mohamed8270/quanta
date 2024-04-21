@@ -32,15 +32,16 @@ class MongoDBclass extends GetxController {
   }
 
   // fetch similar products
-  Future<SimilarProductsModel> fetchSimilarProducts(String id) async {
+  Future<List<SimilarProductsModel>> fetchSimilarProducts(String id) async {
     http.Response response = await http.get(
       Uri.tryParse(
           'https://server-b848.onrender.com/products/similar/product/$id')!,
     );
 
-    final similarproductRes = jsonDecode(response.body);
-    final similarproductModel =
-        SimilarProductsModel.fromJson(similarproductRes);
+    List<dynamic> similarproductRes = jsonDecode(response.body);
+    List<SimilarProductsModel> similarproductModel = similarproductRes
+        .map((dynamic e) => SimilarProductsModel.fromJson(e))
+        .toList();
     return similarproductModel;
   }
 }

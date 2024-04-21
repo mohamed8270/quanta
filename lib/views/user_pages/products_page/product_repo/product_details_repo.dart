@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
-import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:quanta/constants/theme.dart';
 import 'package:quanta/interface/reusable/expandable_text.dart';
 import 'package:quanta/views/user_pages/products_page/product_repo/product_price_card.dart';
+import 'package:quanta/views/user_pages/products_page/product_repo/similar_product_repo/similar_product_repo.dart';
 
 class ProductDetailsRepo extends StatelessWidget {
   const ProductDetailsRepo(
@@ -212,7 +212,9 @@ class ProductDetailsRepo extends StatelessWidget {
               minLines: 7,
               text: cleanDescription(description),
             ),
-            const Gap(100),
+            ThemeClass.space1,
+            Text('Similar Products', style: ThemeClass.heading3),
+            GetSimilarProductsRepo(id: id),
           ],
         ),
       ),
