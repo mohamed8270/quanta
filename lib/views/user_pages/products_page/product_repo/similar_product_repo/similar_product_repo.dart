@@ -31,14 +31,19 @@ class GetSimilarProductsRepo extends StatelessWidget {
               itemBuilder: (context, index) {
                 final data = similarmodel[index];
                 return ProductCardRepo(
+                  click: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          ProductDetailPage(id: data.id.toString()),
+                    ),
+                  ),
                   imgurl: data.image.toString(),
                   title: data.title.toString(),
                   offer: data.discountPercentage.toString(),
                   price: data.currentPrice.toString(),
                   brand: data.brand.toString(),
                   symbol: data.currency.toString(),
-                  click: () =>
-                      Get.to(ProductDetailPage(id: data.id.toString())),
                 );
               },
             ),

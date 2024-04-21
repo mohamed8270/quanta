@@ -66,7 +66,7 @@ class _MongoDataShimmerState extends State<MongoDataShimmer>
               );
             },
             child: Padding(
-              padding: const EdgeInsets.all(5),
+              padding: const EdgeInsets.only(top: 10, right: 10, bottom: 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,7 +86,7 @@ class _MongoDataShimmerState extends State<MongoDataShimmer>
                     children: [
                       Container(
                         height: screenSize.height * 0.02,
-                        width: screenSize.width * 0.5,
+                        width: screenSize.width * 0.53,
                         decoration: BoxDecoration(
                           color: qgrey,
                           borderRadius: BorderRadius.circular(10),
