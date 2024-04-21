@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:quanta/constants/theme.dart';
 import 'package:quanta/interface/reusable/expandable_text.dart';
@@ -215,6 +216,7 @@ class ProductDetailsRepo extends StatelessWidget {
             ThemeClass.space1,
             Text('Similar Products', style: ThemeClass.heading3),
             GetSimilarProductsRepo(id: id),
+            const Gap(100),
           ],
         ),
       ),

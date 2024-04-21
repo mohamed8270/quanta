@@ -116,7 +116,7 @@ class UserSearchInput extends StatelessWidget {
           suffixIcon: GestureDetector(
             onTap: click,
             child: Padding(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(10),
               child: SvgPicture.network(
                 'https://www.svgrepo.com/show/520924/search-4.svg',
                 color: qdark2.withOpacity(0.6),

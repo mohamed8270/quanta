@@ -22,7 +22,7 @@ class _MongoDataShimmerState extends State<MongoDataShimmer>
       duration: const Duration(milliseconds: 1500),
     );
     _animations = List.generate(
-      3,
+      1,
       (index) => Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
           parent: _animationController,
@@ -53,10 +53,10 @@ class _MongoDataShimmerState extends State<MongoDataShimmer>
       highlightColor: qgrey.withOpacity(0.6),
       direction: ShimmerDirection.ltr,
       period: const Duration(seconds: 2), // Keep overall shimmer duration
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: List.generate(
-          3,
+          1,
           (index) => AnimatedBuilder(
             animation: _animations[index],
             builder: (context, child) {
@@ -66,7 +66,7 @@ class _MongoDataShimmerState extends State<MongoDataShimmer>
               );
             },
             child: Padding(
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(5),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

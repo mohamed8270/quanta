@@ -12,6 +12,7 @@ class GetSimilarProductsRepo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.sizeOf(context);
     final MongoDBclass mongoDBclass = Get.put(MongoDBclass());
     return FutureBuilder<List<SimilarProductsModel>>(
       future: mongoDBclass.fetchSimilarProducts(id),
@@ -21,20 +22,26 @@ class GetSimilarProductsRepo extends StatelessWidget {
           return const MongoDataShimmer();
         } else if (snapshot.hasData) {
           List<SimilarProductsModel>? similarmodel = snapshot.data;
-          return ListView.builder(
-            itemCount: similarmodel!.length,
-            itemBuilder: (context, index) {
-              final data = similarmodel[index];
-              return ProductCardRepo(
-                imgurl: data.image.toString(),
-                title: data.title.toString(),
-                offer: data.discountPercentage.toString(),
-                price: data.currentPrice.toString(),
-                brand: data.brand.toString(),
-                symbol: data.currency.toString(),
-                click: () => Get.to(ProductDetailPage(id: id)),
-              );
-            },
+          return SizedBox(
+            height: screenSize.height * 0.21,
+            width: screenSize.width,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: similarmodel!.length,
+              itemBuilder: (context, index) {
+                final data = similarmodel[index];
+                return ProductCardRepo(
+                  imgurl: data.image.toString(),
+                  title: data.title.toString(),
+                  offer: data.discountPercentage.toString(),
+                  price: data.currentPrice.toString(),
+                  brand: data.brand.toString(),
+                  symbol: data.currency.toString(),
+                  click: () =>
+                      Get.to(ProductDetailPage(id: data.id.toString())),
+                );
+              },
+            ),
           );
         }
         return const Text('Server Busy');
