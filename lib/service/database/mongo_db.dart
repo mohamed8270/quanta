@@ -44,4 +44,13 @@ class MongoDBclass extends GetxController {
         .toList();
     return similarproductModel;
   }
+
+  // Add prducts to DB from amazon URL
+  Future<void> insertproductURL(String url) async {
+    http.Response response = await http.get(
+      Uri.tryParse('https://server-b848.onrender.com/products/amazon$url')!,
+    );
+
+    if (response.statusCode == 200) {}
+  }
 }
