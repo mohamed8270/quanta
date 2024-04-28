@@ -3,8 +3,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:quanta/components/greeting_sectiomn.dart';
 import 'package:quanta/components/chat_page_appbar.dart';
+import 'package:quanta/components/widgets/code_highlight_text.dart';
 import 'package:quanta/interface/views/animations/shimmer_loading.dart';
 import 'package:quanta/interface/reusable/submit_button.dart';
 import 'package:quanta/interface/reusable/user_input_box.dart';
@@ -155,72 +157,18 @@ class _ChatPageState extends State<ChatPage> {
                 height: isLoading ? screenSize.height * 0.15 : null,
                 child: isLoading
                     ? const ShimmerLoadingAnimation()
-                    : Text(
-                        responseBoldCheck(response),
-                        textAlign: TextAlign.justify,
-                        style: ThemeClass.heading4,
-                      ),
+                    : CodeHighlighter(input: responseBoldCheck(response)),
+                // : Text(
+                //     responseBoldCheck(response),
+                //     textAlign: TextAlign.justify,
+                //     style: ThemeClass.heading4,
+                //   ),
               ),
-              ThemeClass.space5,
+              const Gap(150),
             ],
           ),
         ),
       ),
     );
   }
-
-  // List<TextSpan> _parseBoldAndCode(String text) {
-  //   final List<TextSpan> spans = [];
-  //   int start = 0;
-  //   int end;
-  //   bool isCode = false;
-  //   bool isBold = false;
-
-  //   if (text.isEmpty) return spans; // Add this line
-
-  //   for (int i = 0; i < text.length; i++) {
-  //     if (text[i] == '`') {
-  //       end = i;
-  //       spans.add(TextSpan(text: text.substring(start, end)));
-  //       start = end + 1;
-  //       isCode = !isCode;
-  //     } else if (text[i] == '*' && i + 1 < text.length && text[i + 1] == '*') {
-  //       end = i;
-  //       spans.add(TextSpan(text: text.substring(start, end)));
-  //       start = end + 2;
-  //       isBold = !isBold;
-  //       i++; // Skip the second asterisk
-  //     }
-
-  //     if (isCode) {
-  //       int codeEnd = text.indexOf('`', start);
-  //       if (codeEnd != -1) {
-  //         spans.add(TextSpan(
-  //           text: text.substring(start, codeEnd),
-  //           style: const TextStyle(fontFamily: 'Courier'),
-  //         ));
-  //         start = codeEnd + 1;
-  //       } else {
-  //         spans.add(TextSpan(text: text.substring(start)));
-  //         start = text.length;
-  //       }
-  //     } else if (isBold) {
-  //       int boldEnd = text.indexOf('**', start);
-  //       if (boldEnd != -1) {
-  //         spans.add(TextSpan(
-  //           text: text.substring(start, boldEnd),
-  //           style: const TextStyle(fontWeight: FontWeight.bold),
-  //         ));
-  //         start = boldEnd + 2;
-  //       } else {
-  //         spans.add(TextSpan(text: text.substring(start)));
-  //         start = text.length;
-  //       }
-  //     }
-  //   }
-
-  //   spans.add(TextSpan(text: text.substring(start)));
-
-  //   return spans;
-  // }
 }

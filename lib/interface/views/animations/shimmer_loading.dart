@@ -26,7 +26,7 @@ class _ShimmerLoadingAnimationState extends State<ShimmerLoadingAnimation>
       duration: const Duration(milliseconds: 1500),
     );
     _animations = List.generate(
-      4,
+      3,
       (index) => Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
           parent: _animationController,
@@ -56,11 +56,11 @@ class _ShimmerLoadingAnimationState extends State<ShimmerLoadingAnimation>
       baseColor: qgrey.withOpacity(0.4),
       highlightColor: qyellow,
       direction: ShimmerDirection.ltr,
-      period: const Duration(seconds: 2), // Keep overall shimmer duration
+      period: const Duration(seconds: 2),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: List.generate(
-          4,
+          3,
           (index) => AnimatedBuilder(
             animation: _animations[index],
             builder: (context, child) {
@@ -75,7 +75,7 @@ class _ShimmerLoadingAnimationState extends State<ShimmerLoadingAnimation>
                 height: screenSize.height * 0.02,
                 width: screenSize.width,
                 decoration: BoxDecoration(
-                  color: qgrey,
+                  color: qwhite,
                   borderRadius: BorderRadius.circular(5),
                 ),
               ),

@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const Product = require('./models/product.model');
 const connectToDB = require('./mongoose');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
@@ -10,6 +11,7 @@ const scrapeAmazonProduct = require('./lib/scraper');
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json());
 const port  = process.env.PORT || 3000;
 const localhostUrl = `http://localhost:${port}`;
 
@@ -56,15 +58,17 @@ app.get('/products/similar/product/:id', async (req, res) => {
 
 // Insert amazon product
 app.post('/products/amazon', async (req, res) => {
+    const amazonurl = req.body.url;
+    console.log(amazonurl);
     try {
-        console.log("Hello");
-        const {amazonurl} = req.body;
         const validURL = isValidAmazonProductURL(amazonurl);
+        console.log(validURL);
         if(!validURL){
             res.status(404).json({message: "Enter a valid amazon URL"});
         }
         const scrapeamazondata = await scrapeAmazonProduct(amazonurl);
         console.log(scrapeamazondata);
+        res.json(scrapeAmazonProduct);
     } catch (error) {
         res.status(500).send({ message: "An error occurred while getting the product details", error: error.message });
     }
