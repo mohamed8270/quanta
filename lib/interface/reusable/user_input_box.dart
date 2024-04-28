@@ -77,11 +77,13 @@ class UserSearchInput extends StatelessWidget {
     required this.txt,
     required this.controller,
     required this.click,
+    required this.isLoading,
   });
 
   final String txt;
   final TextEditingController controller;
   final VoidCallback click;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -113,16 +115,27 @@ class UserSearchInput extends StatelessWidget {
           ),
           isDense: true,
           floatingLabelBehavior: FloatingLabelBehavior.never,
-          suffixIcon: GestureDetector(
-            onTap: click,
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: SvgPicture.network(
-                'https://www.svgrepo.com/show/520924/search-4.svg',
-                color: qdark2.withOpacity(0.6),
-              ),
-            ),
-          ),
+          suffixIcon: isLoading
+              ? SizedBox(
+                  height: screenSize.height * 0.025,
+                  width: screenSize.width * 0.025,
+                  child: const CircularProgressIndicator(
+                    color: qyellow,
+                    strokeWidth: 1.5,
+                    strokeCap: StrokeCap.round,
+                    strokeAlign: BorderSide.strokeAlignCenter,
+                  ),
+                )
+              : GestureDetector(
+                  onTap: click,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: SvgPicture.network(
+                      'https://www.svgrepo.com/show/520924/search-4.svg',
+                      color: qdark2.withOpacity(0.6),
+                    ),
+                  ),
+                ),
           // enabledBorder: InputBorder.none,
           // focusedBorder: InputBorder.none,
           enabledBorder: OutlineInputBorder(

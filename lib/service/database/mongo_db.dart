@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:quanta/constants/theme.dart';
 import 'package:quanta/service/models/mongodb_models.dart';
 
 class MongoDBclass extends GetxController {
@@ -47,10 +48,17 @@ class MongoDBclass extends GetxController {
 
   // Add prducts to DB from amazon URL
   Future<void> insertproductURL(String url) async {
-    http.Response response = await http.get(
-      Uri.tryParse('https://server-b848.onrender.com/products/amazon$url')!,
+    http.Response response = await http.post(
+      Uri.tryParse('https://server-b848.onrender.com/products/amazon')!,
+      body: jsonEncode({'url': url}),
     );
 
-    if (response.statusCode == 200) {}
+    if (response.statusCode == 200) {
+      ThemeClass().successSnack();
+    } else if (response.statusCode == 404) {
+      ThemeClass().errorSnack(response.statusCode);
+    } else {
+      throw Exception('Error while getting product');
+    }
   }
 }

@@ -6,13 +6,22 @@ import 'package:get/get.dart';
 import 'package:quanta/components/widgets/appbar_widget.dart';
 import 'package:quanta/constants/theme.dart';
 import 'package:quanta/interface/reusable/user_input_box.dart';
+import 'package:quanta/service/database/mongo_db.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
     final TextEditingController searchController = TextEditingController();
+    final MongoDBclass mongoDBclass = Get.put(MongoDBclass());
     return Scaffold(
       backgroundColor: qwhite,
       appBar: const PreferredSize(
@@ -57,7 +66,16 @@ class HomePage extends StatelessWidget {
             UserSearchInput(
               txt: 'Enter amazon link',
               controller: searchController,
-              click: () {},
+              click: () {
+                setState(() {
+                  loading = true;
+                });
+                mongoDBclass.insertproductURL(searchController.text);
+                setState(() {
+                  loading = false;
+                });
+              },
+              isLoading: loading,
             )
           ],
         ),
