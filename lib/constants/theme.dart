@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quanta/interface/reusable/user_input_box.dart';
+import 'package:quanta/service/database/mongo_db.dart';
 
 // Primary Colors
 const Color qblack = Color(0xFF242424);
@@ -277,9 +278,10 @@ class ThemeClass {
     );
   }
 
-  Future<void> mailDialogueBox(BuildContext context) {
+  Future<void> mailDialogueBox(BuildContext context, String id) {
     final screenSize = MediaQuery.sizeOf(context);
     var trackController = TextEditingController();
+    MongoDBclass mongoDBclass = Get.put(MongoDBclass());
     return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -326,7 +328,10 @@ class ThemeClass {
           ),
           actions: [
             GestureDetector(
-              onTap: () {},
+              onTap: () async {
+                mongoDBclass.insertEmail(id, trackController.text);
+                Get.back();
+              },
               child: Container(
                 height: screenSize.height * 0.055,
                 width: screenSize.width,

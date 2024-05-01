@@ -105,7 +105,6 @@ class UserSearchInput extends StatelessWidget {
           fontWeight: FontWeight.w500,
           color: qblack,
         ),
-        textAlign: TextAlign.left,
         decoration: InputDecoration(
           labelText: txt,
           labelStyle: GoogleFonts.poppins(
