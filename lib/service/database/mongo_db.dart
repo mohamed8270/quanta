@@ -51,6 +51,7 @@ class MongoDBclass extends GetxController {
     http.Response response = await http.post(
       Uri.tryParse('https://server-b848.onrender.com/products/amazon')!,
       body: jsonEncode({'url': url}),
+      headers: {'Content-Type': 'application/json'},
     );
 
     if (response.statusCode == 200) {
