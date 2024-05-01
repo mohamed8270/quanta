@@ -188,7 +188,7 @@ class ProductDetailsRepo extends StatelessWidget {
             ),
             ThemeClass.space1,
             GestureDetector(
-              onTap: () {},
+              onTap: () => ThemeClass().mailDialogueBox(context),
               child: Container(
                 height: screenSize.height * 0.06,
                 width: screenSize.width,

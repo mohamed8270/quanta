@@ -54,7 +54,8 @@ class ProductPage extends StatelessWidget {
               },
             );
           } else if (snapshot.hasError) {
-            return Text(snapshot.error.toString());
+            return ThemeClass()
+                .errorSnack404(context, snapshot.error.toString());
           }
           return const Text('Server Busy');
         },

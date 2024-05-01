@@ -1,7 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quanta/interface/reusable/user_input_box.dart';
 
 // Primary Colors
 const Color qblack = Color(0xFF242424);
@@ -238,6 +242,107 @@ class ThemeClass {
           color: qblack,
         ),
       ),
+    );
+  }
+
+  Widget errorSnack404(context, e) {
+    final screenSize = MediaQuery.sizeOf(context);
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            height: screenSize.height * 0.2,
+            width: screenSize.width * 0.4,
+            decoration: const BoxDecoration(
+              color: Colors.transparent,
+              image: DecorationImage(
+                image: NetworkImage(
+                    'https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg'),
+                fit: BoxFit.cover,
+                filterQuality: FilterQuality.high,
+              ),
+            ),
+          ),
+          ThemeClass.space1,
+          SizedBox(
+            width: screenSize.width * 0.85,
+            child: Text(
+              '$e',
+              style: ThemeClass.heading5,
+              overflow: TextOverflow.visible,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> mailDialogueBox(BuildContext context) {
+    final screenSize = MediaQuery.sizeOf(context);
+    var trackController = TextEditingController();
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: qwhite,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SvgPicture.network(
+                'https://www.svgrepo.com/show/303264/amazon-2-logo.svg',
+                height: 38,
+                width: 38,
+              ),
+              GestureDetector(
+                onTap: () => Get.back(),
+                child: SvgPicture.network(
+                  'https://www.svgrepo.com/show/444605/cross.svg',
+                  height: 18,
+                  width: 18,
+                ),
+              ),
+            ],
+          ),
+          content: SizedBox(
+            height: screenSize.height * 0.2,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Stay updated with product pricing alerts right in your inbox',
+                  style: ThemeClass.heading3,
+                ),
+                ThemeClass.space0,
+                Text(
+                  'Never miss a bargain with our timely alerts!',
+                  style: ThemeClass.heading6,
+                ),
+                ThemeClass.space3,
+                Text('Email Address', style: ThemeClass.heading5),
+                ThemeClass.space0,
+                UserTrackInputBox(txt: 'Email', controller: trackController),
+              ],
+            ),
+          ),
+          actions: [
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                height: screenSize.height * 0.055,
+                width: screenSize.width,
+                decoration: BoxDecoration(
+                  color: qblack,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                alignment: Alignment.center,
+                child: Text('Track', style: ThemeClass.detailDiscountTxt),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
