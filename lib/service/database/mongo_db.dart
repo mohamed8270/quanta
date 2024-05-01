@@ -62,4 +62,21 @@ class MongoDBclass extends GetxController {
       throw Exception('Error while getting product');
     }
   }
+
+  // Add user email
+  Future<void> insertEmail(String productid, String email) async {
+    http.Response response = await http.post(
+      Uri.tryParse('https://server-b848.onrender.com/products/email')!,
+      body: jsonEncode({'productId': productid, 'email': email}),
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      ThemeClass().successSnack();
+    } else if (response.statusCode == 404) {
+      ThemeClass().errorSnack(response.statusCode);
+    } else {
+      throw Exception('Error while getting product');
+    }
+  }
 }
