@@ -27,9 +27,9 @@ class ProductCardRepo extends StatelessWidget {
 
     String offerCheck(off) {
       if (off == '0') {
-        return 'One day offer available!';
+        return 'Limited time deal!';
       } else if (off != null) {
-        return 'off $off%';
+        return '$off% off';
       }
       return 'No offer!';
     }

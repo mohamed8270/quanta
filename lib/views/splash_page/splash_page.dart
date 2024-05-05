@@ -41,7 +41,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: qwhite,
+      backgroundColor: qyellow,
       body: SafeArea(
         child: Center(
           child: SvgPicture.network(

@@ -40,7 +40,7 @@ class AppBarWidget extends StatelessWidget {
       leading: GestureDetector(
         onTap: leadingClick,
         child: Padding(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(13),
           child: SvgPicture.network(
             leading,
             height: 16,
@@ -51,7 +51,7 @@ class AppBarWidget extends StatelessWidget {
       ),
       title: Text(
         txt,
-        style: ThemeClass.heading1,
+        style: ThemeClass.heading3,
       ),
       actions: actions,
     );

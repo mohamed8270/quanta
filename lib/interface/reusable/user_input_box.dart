@@ -181,7 +181,7 @@ class UserTrackInputBox extends StatelessWidget {
         controller: controller,
         keyboardType: TextInputType.emailAddress,
         cursorColor: qyellow,
-        cursorHeight: 20,
+        cursorHeight: 16,
         style: GoogleFonts.poppins(
           fontSize: 11,
           fontWeight: FontWeight.w500,
@@ -189,8 +189,8 @@ class UserTrackInputBox extends StatelessWidget {
         ),
         textAlign: TextAlign.left,
         decoration: InputDecoration(
-          labelText: txt,
-          labelStyle: GoogleFonts.poppins(
+          hintText: txt,
+          hintStyle: GoogleFonts.poppins(
             fontSize: 11,
             fontWeight: FontWeight.w500,
             color: qdark2.withOpacity(0.6),

@@ -22,7 +22,7 @@ class ProductPage extends StatelessWidget {
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(50),
         child: AppBarWidget(
-          leading: 'https://www.svgrepo.com/show/448823/product-blink.svg',
+          leading: 'https://www.svgrepo.com/show/529449/cart-check.svg',
           leadingcolor: qblack,
           txt: 'Track Products',
           actions: [],

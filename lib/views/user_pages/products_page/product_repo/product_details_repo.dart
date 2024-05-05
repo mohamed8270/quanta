@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
@@ -71,6 +72,15 @@ class ProductDetailsRepo extends StatelessWidget {
       }
     }
 
+    String offerCheck(off) {
+      if (off == '0') {
+        return 'Limited time deal!';
+      } else if (off != null) {
+        return '$off% off';
+      }
+      return 'No offer!';
+    }
+
     return Padding(
       padding: const EdgeInsets.only(left: 10, right: 10),
       child: SingleChildScrollView(
@@ -97,14 +107,20 @@ class ProductDetailsRepo extends StatelessWidget {
               style: ThemeClass.titleTxt,
             ),
             ThemeClass.space1,
-            Container(
-              height: screenSize.height * 0.03,
-              width: screenSize.width * 0.2,
-              decoration: const BoxDecoration(color: qred),
-              alignment: Alignment.center,
-              child: Text(
-                '$discountPercentage% off',
-                style: ThemeClass.detailDiscountTxt,
+            FittedBox(
+              fit: BoxFit.fitWidth,
+              child: Container(
+                height: screenSize.height * 0.03,
+                // width: screenSize.width * 0.2,
+                decoration: const BoxDecoration(color: qred),
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Text(
+                    offerCheck(discountPercentage),
+                    style: ThemeClass.detailDiscountTxt,
+                  ),
+                ),
               ),
             ),
             Container(
@@ -124,7 +140,7 @@ class ProductDetailsRepo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '-$discountPercentage%',
+                  discountPercentage == '0' ? '' : '-$discountPercentage%',
                   style: ThemeClass.detailDiscountPercentageTxt,
                 ),
                 ThemeClass.space2,

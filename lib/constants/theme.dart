@@ -19,7 +19,7 @@ const Color qorange = Color(0xFFd76573);
 const Color qpink = Color(0xFFF91C4F);
 const Color qviolet = Color(0xFFa070c3);
 const Color qgrey = Color(0xFFECECEC);
-const Color qred = Color(0xFFFF0000);
+const Color qred = Color(0xFFBF455B);
 const Color qyellow = Color(0xFFFF9900);
 const Color qcode = Color(0xFF011627);
 
@@ -329,8 +329,12 @@ class ThemeClass {
           actions: [
             GestureDetector(
               onTap: () async {
-                mongoDBclass.insertEmail(id, trackController.text);
-                Get.back();
+                if (trackController.text.isEmpty) {
+                  ThemeClass().errorSnack('Please enter email');
+                } else if (trackController.text.isNotEmpty) {
+                  mongoDBclass.insertEmail(id, trackController.text);
+                  Get.back();
+                }
               },
               child: Container(
                 height: screenSize.height * 0.055,
