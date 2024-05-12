@@ -2,91 +2,109 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quanta/constants/theme.dart';
 import 'package:quanta/views/user_pages/home_page.dart';
 import 'package:quanta/views/user_pages/products_page/product_page.dart';
 
-class BottomNavBar extends StatefulWidget {
+class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
 
   @override
-  State<BottomNavBar> createState() => _BottomNavBarState();
+  Widget build(BuildContext context) {
+    final navigateControl = Get.put(NavigationController());
+    return Scaffold(
+      bottomNavigationBar: Obx(
+        () => Container(
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(
+                color: qblack.withOpacity(0.3),
+                width: 0.2,
+              ),
+            ),
+          ),
+          child: NavigationBarTheme(
+            data: NavigationBarThemeData(
+              labelTextStyle: MaterialStateProperty.all(
+                GoogleFonts.poppins(
+                  color: qblack,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            child: NavigationBar(
+              height: 80,
+              elevation: 0,
+              backgroundColor: qwhite,
+              selectedIndex: navigateControl.selectedIndex.value,
+              onDestinationSelected: (index) =>
+                  navigateControl.selectedIndex.value = index,
+              indicatorColor: qblack.withOpacity(0.035),
+              destinations: [
+                NavigationDestination(
+                  icon: SvgPicture.network(
+                    'https://www.svgrepo.com/show/498091/home.svg',
+                    color: qblack,
+                  ),
+                  selectedIcon: SvgPicture.network(
+                    'https://www.svgrepo.com/show/498091/home.svg',
+                    color: qblack,
+                  ),
+                  label: 'Home',
+                ),
+                NavigationDestination(
+                  icon: SvgPicture.network(
+                    'https://www.svgrepo.com/show/475634/amazon-color.svg',
+                    height: 24,
+                    width: 24,
+                  ),
+                  selectedIcon: SvgPicture.network(
+                    'https://www.svgrepo.com/show/475634/amazon-color.svg',
+                    height: 24,
+                    width: 24,
+                  ),
+                  label: 'Products',
+                ),
+                NavigationDestination(
+                  icon: SvgPicture.network(
+                    'https://www.svgrepo.com/show/527424/sale.svg',
+                  ),
+                  selectedIcon: SvgPicture.network(
+                    'https://www.svgrepo.com/show/527424/sale.svg',
+                  ),
+                  label: 'Deals',
+                ),
+                NavigationDestination(
+                  icon: SvgPicture.network(
+                    'https://www.svgrepo.com/show/498298/profile.svg',
+                  ),
+                  selectedIcon: SvgPicture.network(
+                    'https://www.svgrepo.com/show/498298/profile.svg',
+                  ),
+                  label: 'Profile',
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      body: Obx(
+        () => navigateControl.screens[navigateControl.selectedIndex.value],
+      ),
+    );
+  }
 }
 
-class _BottomNavBarState extends State<BottomNavBar> {
-  int currentIndex = 0;
+class NavigationController extends GetxController {
+  final selectedIndex = 0.obs;
 
   final screens = [
     const HomePage(),
     ProductPage(),
+    const HomePage(),
+    const HomePage(),
   ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: screens[currentIndex],
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(
-              color: qblack.withOpacity(0.3),
-              width: 0.15,
-            ),
-          ),
-        ),
-        child: BottomNavigationBar(
-          backgroundColor: qwhite,
-          type: BottomNavigationBarType.fixed,
-          elevation: 0,
-          iconSize: 18,
-          currentIndex: currentIndex,
-          selectedLabelStyle: GoogleFonts.poppins(
-            color: currentIndex == 1 ? qblack : qyellow,
-            fontSize: 10,
-            fontWeight: FontWeight.w500,
-            height: 1.5,
-          ),
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          unselectedItemColor: qblack.withOpacity(0.3),
-          selectedItemColor: currentIndex == 1 ? qblack : qyellow,
-          unselectedLabelStyle: GoogleFonts.poppins(
-            color: qblack.withOpacity(0.3),
-            fontSize: 10,
-            fontWeight: FontWeight.w500,
-            height: 1.5,
-          ),
-          onTap: (index) => setState(() => currentIndex = index),
-          items: [
-            BottomNavigationBarItem(
-              icon: SvgPicture.network(
-                'https://www.svgrepo.com/show/524643/home-angle-2.svg',
-                color: qblack.withOpacity(0.3),
-              ),
-              activeIcon: SvgPicture.network(
-                'https://www.svgrepo.com/show/525378/home-angle-2.svg',
-                color: qyellow,
-              ),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.network(
-                'https://www.svgrepo.com/show/475634/amazon-color.svg',
-                height: 24,
-                width: 24,
-                color: qblack.withOpacity(0.3),
-              ),
-              activeIcon: SvgPicture.network(
-                'https://www.svgrepo.com/show/475634/amazon-color.svg',
-                height: 24, width: 24,
-                // color: qblue,
-              ),
-              label: 'Products',
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }

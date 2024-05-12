@@ -153,6 +153,12 @@ class ThemeClass {
     color: qwhite,
   );
 
+  static TextStyle genAiTxt = GoogleFonts.poppins(
+    fontSize: 22,
+    fontWeight: FontWeight.w700,
+    color: qwhite,
+  );
+
   // Padding
   static EdgeInsets padding0 =
       const EdgeInsets.only(right: 10, left: 10, top: 20);
