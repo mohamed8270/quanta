@@ -20,11 +20,11 @@ class BottomNavBar extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: Obx(
         () => Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             border: Border(
               top: BorderSide(
-                color: qblack.withOpacity(0.3),
-                width: 0.2,
+                color: qgrey,
+                width: 0.7,
               ),
             ),
           ),
@@ -45,7 +45,7 @@ class BottomNavBar extends StatelessWidget {
               );
             })),
             child: NavigationBar(
-              height: 80,
+              height: 65,
               elevation: 0,
               backgroundColor: qwhite,
               selectedIndex: navigateControl.selectedIndex.value,
