@@ -4,7 +4,7 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:quanta/constants/theme.dart';
+import 'package:quanta/constants/utils/snack_bar.dart';
 import 'package:quanta/service/models/mongodb_models.dart';
 
 class MongoDBclass extends GetxController {
@@ -55,9 +55,9 @@ class MongoDBclass extends GetxController {
     );
 
     if (response.statusCode == 200) {
-      ThemeClass().successSnack();
+      SnackBarClass().successSnack();
     } else if (response.statusCode == 404) {
-      ThemeClass().errorSnack(response.statusCode);
+      SnackBarClass().errorSnack(response.statusCode);
     } else {
       throw Exception('Error while getting product');
     }
@@ -72,9 +72,9 @@ class MongoDBclass extends GetxController {
     );
 
     if (response.statusCode == 200) {
-      ThemeClass().successSnack();
+      SnackBarClass().successSnack();
     } else if (response.statusCode == 404) {
-      ThemeClass().errorSnack(response.statusCode);
+      SnackBarClass().errorSnack(response.statusCode);
     } else {
       throw Exception('Error while getting product');
     }

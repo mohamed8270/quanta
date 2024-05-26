@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quanta/components/widgets/appbar_widget.dart';
 import 'package:quanta/constants/theme.dart';
+import 'package:quanta/constants/utils/snack_bar.dart';
 import 'package:quanta/interface/views/animations/linear_progess_shimmer.dart';
 // import 'package:quanta/interface/views/animations/mongo_data_shimmer.dart';
 import 'package:quanta/service/database/mongo_db.dart';
@@ -54,7 +55,7 @@ class ProductPage extends StatelessWidget {
               },
             );
           } else if (snapshot.hasError) {
-            return ThemeClass()
+            return SnackBarClass()
                 .errorSnack404(context, snapshot.error.toString());
           }
           return const Text('Server Busy');

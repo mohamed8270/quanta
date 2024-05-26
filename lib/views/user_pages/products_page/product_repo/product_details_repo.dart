@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:quanta/constants/theme.dart';
+import 'package:quanta/constants/utils/dialogue_box.dart';
 import 'package:quanta/interface/reusable/expandable_text.dart';
 import 'package:quanta/views/user_pages/products_page/product_repo/product_price_card.dart';
 import 'package:quanta/views/user_pages/products_page/product_repo/similar_product_repo/similar_product_repo.dart';
@@ -204,7 +205,7 @@ class ProductDetailsRepo extends StatelessWidget {
             ),
             ThemeClass.space1,
             GestureDetector(
-              onTap: () => ThemeClass().mailDialogueBox(context, id),
+              onTap: () => DialogueBoxClass().mailDialogueBox(context, id),
               child: Container(
                 height: screenSize.height * 0.06,
                 width: screenSize.width,
