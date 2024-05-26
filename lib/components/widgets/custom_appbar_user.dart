@@ -13,6 +13,7 @@ class HomePageUserWidget extends StatelessWidget {
       padding: const EdgeInsets.only(top: 30, bottom: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,8 +24,8 @@ class HomePageUserWidget extends StatelessWidget {
           ),
           SvgPicture.network(
             'https://www.svgrepo.com/show/498259/notification-bing.svg',
-            height: 24,
-            width: 24,
+            height: 22,
+            width: 22,
             colorFilter: const ColorFilter.mode(qblack, BlendMode.srcIn),
           ),
         ],
