@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:quanta/constants/theme.dart';
+import 'package:quanta/constants/utils/static.dart';
 
 class ConnectivityController extends GetxController {
   final Connectivity _connectivity = Connectivity();
@@ -25,8 +26,8 @@ class ConnectivityController extends GetxController {
         isDismissible: false,
         duration: const Duration(days: 1),
         backgroundColor: qred,
-        icon: SvgPicture.network(
-          'https://www.svgrepo.com/show/379983/connection-signal-wifi.svg',
+        icon: SvgPicture.asset(
+          StaticClass.wifi,
           height: 16,
           width: 16,
           color: qwhite,

@@ -20,6 +20,9 @@ class StaticClass {
   static String profileOutline = 'assets/icons/profile-outline.svg';
   static String profileFilled = 'assets/icons/profile-filled.svg';
 
+  static String wifi = 'assets/icons/wifi.svg';
+  static String logo = 'assets/icons/logo.svg';
+
   Widget outlineSvg(asset) {
     return SvgPicture.asset(asset, height: 24, width: 24);
   }

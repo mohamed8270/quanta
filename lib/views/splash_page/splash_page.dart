@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:quanta/components/internet_error_page.dart';
 import 'package:quanta/constants/theme.dart';
+import 'package:quanta/constants/utils/static.dart';
 import 'package:quanta/interface/views/bottom_nav_bar.dart';
 
 class SplashPage extends StatefulWidget {
@@ -44,8 +45,8 @@ class _SplashPageState extends State<SplashPage> {
       backgroundColor: qwhite,
       body: SafeArea(
         child: Center(
-          child: SvgPicture.network(
-            'https://www.svgrepo.com/show/303264/amazon-2-logo.svg',
+          child: SvgPicture.asset(
+            StaticClass.logo,
             height: 140,
             width: 140,
             // color: qblue,
