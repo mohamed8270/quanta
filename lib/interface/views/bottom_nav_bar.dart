@@ -1,10 +1,10 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quanta/constants/theme.dart';
+import 'package:quanta/constants/utils/static.dart';
 import 'package:quanta/views/user_pages/deals_page/deals_view.dart';
 import 'package:quanta/views/user_pages/home_page.dart';
 import 'package:quanta/views/user_pages/products_page/product_page.dart';
@@ -33,13 +33,13 @@ class BottomNavBar extends StatelessWidget {
               if (state.contains(MaterialState.selected)) {
                 return GoogleFonts.poppins(
                   color: qblack,
-                  fontSize: 10,
+                  fontSize: 8,
                   fontWeight: FontWeight.w700,
                 );
               }
               return GoogleFonts.poppins(
                 color: qblack,
-                fontSize: 10,
+                fontSize: 8,
                 fontWeight: FontWeight.w500,
               );
             })),
@@ -53,47 +53,25 @@ class BottomNavBar extends StatelessWidget {
               indicatorColor: qblack.withOpacity(0.035),
               destinations: [
                 NavigationDestination(
-                  icon: SvgPicture.network(
-                    'https://www.svgrepo.com/show/498093/home-1.svg',
-                    height: 24,
-                    width: 24,
-                  ),
-                  selectedIcon: SvgPicture.network(
-                    'https://www.svgrepo.com/show/498093/home-1.svg',
-                    height: 24,
-                    width: 24,
-                  ),
+                  icon: StaticClass().outlineSvg(StaticClass.homeOutline),
+                  selectedIcon: StaticClass().filledSvg(StaticClass.homeFilled),
                   label: 'Home',
                 ),
                 NavigationDestination(
-                  icon: SvgPicture.network(
-                    'https://www.svgrepo.com/show/475634/amazon-color.svg',
-                    height: 24,
-                    width: 24,
-                  ),
-                  selectedIcon: SvgPicture.network(
-                    'https://www.svgrepo.com/show/475634/amazon-color.svg',
-                    height: 24,
-                    width: 24,
-                  ),
+                  icon: StaticClass().outlineSvg(StaticClass.amazonOutline),
+                  selectedIcon:
+                      StaticClass().filledSvg(StaticClass.amazonFilled),
                   label: 'Products',
                 ),
                 NavigationDestination(
-                  icon: SvgPicture.network(
-                    'https://www.svgrepo.com/show/527424/sale.svg',
-                  ),
-                  selectedIcon: SvgPicture.network(
-                    'https://www.svgrepo.com/show/527424/sale.svg',
-                  ),
+                  icon: StaticClass().outlineSvg(StaticClass.saleOutline),
+                  selectedIcon: StaticClass().filledSvg(StaticClass.saleFilled),
                   label: 'Deals',
                 ),
                 NavigationDestination(
-                  icon: SvgPicture.network(
-                    'https://www.svgrepo.com/show/498298/profile.svg',
-                  ),
-                  selectedIcon: SvgPicture.network(
-                    'https://www.svgrepo.com/show/498298/profile.svg',
-                  ),
+                  icon: StaticClass().outlineSvg(StaticClass.profileOutline),
+                  selectedIcon:
+                      StaticClass().filledSvg(StaticClass.profileFilled),
                   label: 'Profile',
                 ),
               ],
