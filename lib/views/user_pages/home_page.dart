@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:quanta/components/custom_shapes/round_stack.dart';
 import 'package:quanta/components/widgets/custom_appbar_user.dart';
 import 'package:quanta/constants/theme.dart';
+import 'package:quanta/constants/utils/static.dart';
 import 'package:quanta/interface/reusable/user_input_box.dart';
 import 'package:quanta/service/database/mongo_db.dart';
 
@@ -65,19 +66,19 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const HomePageUserWidget(),
-                        Text(ThemeClass.heroGreeting,
+                        Text(StaticClass.heroGreeting,
                             style: ThemeClass.heading6),
-                        Text(ThemeClass.heroGreeting2,
+                        Text(StaticClass.heroGreeting2,
                             style: ThemeClass.heroGreetingTxt),
                         ShaderMask(
                             shaderCallback: (bounds) => const LinearGradient(
                                   colors: [qorange, qyellow],
                                   tileMode: TileMode.mirror,
                                 ).createShader(bounds),
-                            child: Text(ThemeClass.heroGreeting3,
+                            child: Text(StaticClass.heroGreeting3,
                                 style: ThemeClass.heroGreetingTxt2)),
                         ThemeClass.space0,
-                        Text(ThemeClass.heroGreeting4,
+                        Text(StaticClass.heroGreeting4,
                             style: ThemeClass.heading5),
                         ThemeClass.space1,
                         UserSearchInput(
