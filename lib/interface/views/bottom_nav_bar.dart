@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quanta/constants/theme.dart';
@@ -33,13 +34,13 @@ class BottomNavBar extends StatelessWidget {
               if (state.contains(MaterialState.selected)) {
                 return GoogleFonts.poppins(
                   color: qblack,
-                  fontSize: 8,
+                  fontSize: 9,
                   fontWeight: FontWeight.w700,
                 );
               }
               return GoogleFonts.poppins(
                 color: qblack,
-                fontSize: 8,
+                fontSize: 9,
                 fontWeight: FontWeight.w500,
               );
             })),
@@ -59,8 +60,8 @@ class BottomNavBar extends StatelessWidget {
                 ),
                 NavigationDestination(
                   icon: StaticClass().outlineSvg(StaticClass.amazonOutline),
-                  selectedIcon:
-                      StaticClass().filledSvg(StaticClass.amazonFilled),
+                  selectedIcon: SvgPicture.asset(StaticClass.amazonFilled,
+                      height: 24, width: 24),
                   label: 'Products',
                 ),
                 NavigationDestination(

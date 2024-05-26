@@ -24,7 +24,12 @@ class StaticClass {
   static String logo = 'assets/icons/logo.svg';
 
   Widget outlineSvg(asset) {
-    return SvgPicture.asset(asset, height: 24, width: 24);
+    return SvgPicture.asset(
+      asset,
+      height: 24,
+      width: 24,
+      colorFilter: const ColorFilter.mode(qblack, BlendMode.srcIn),
+    );
   }
 
   Widget filledSvg(asset) {

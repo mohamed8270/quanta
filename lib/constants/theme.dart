@@ -78,7 +78,7 @@ class ThemeClass {
   static TextStyle heading7 = GoogleFonts.poppins(
     fontSize: 10,
     fontWeight: FontWeight.w500,
-    color: qblack.withOpacity(0.3),
+    color: qblack.withOpacity(0.5),
   );
 
   static TextStyle brandName = GoogleFonts.poppins(
