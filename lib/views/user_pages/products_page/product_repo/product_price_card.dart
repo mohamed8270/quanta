@@ -17,7 +17,7 @@ class ProductPriceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.sizeOf(context);
     return Container(
-      height: screenSize.height * 0.09,
+      height: screenSize.height * 0.095,
       width: screenSize.width * 0.465,
       decoration: BoxDecoration(
         color: qgrey.withOpacity(0.3),

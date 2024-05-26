@@ -23,7 +23,7 @@ class GetSimilarProductsRepo extends StatelessWidget {
         } else if (snapshot.hasData) {
           List<SimilarProductsModel>? similarmodel = snapshot.data;
           return SizedBox(
-            height: screenSize.height * 0.21,
+            height: screenSize.height * 0.22,
             width: screenSize.width,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,

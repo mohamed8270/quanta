@@ -11,12 +11,10 @@ Future<void> main() async {
   Get.put(ConnectivityController());
   SystemChrome.setEnabledSystemUIMode(
     SystemUiMode.manual,
-    overlays: [SystemUiOverlay.top],
+    overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom],
   );
   SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-    ),
+    const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
   );
   NetworkDependencyInjection.init();
   runApp(const MyApp());

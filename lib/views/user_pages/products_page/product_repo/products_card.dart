@@ -55,7 +55,7 @@ class ProductCardRepo extends StatelessWidget {
         onTap: click,
         borderRadius: BorderRadius.circular(10),
         child: Container(
-          height: screenSize.height * 0.2,
+          height: screenSize.height * 0.21,
           width: screenSize.width * 0.95,
           decoration: BoxDecoration(
             color: qgrey.withOpacity(0.25),

@@ -25,7 +25,7 @@ const Color qcode = Color(0xFF011627);
 
 // Theme class
 class ThemeClass {
-  static String heroGreeting = 'Start harvesting your money here ➡️';
+  static String heroGreeting = 'Start harvesting your money here';
   static String heroGreeting2 = 'Make a wise decission with';
   static String heroGreeting3 = 'Info Harvest & Quanta';
   static String heroGreeting4 =
@@ -83,6 +83,12 @@ class ThemeClass {
     fontSize: 8,
     fontWeight: FontWeight.w500,
     color: qdark1.withOpacity(0.5),
+  );
+
+  static TextStyle heading7 = GoogleFonts.poppins(
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+    color: qblack.withOpacity(0.3),
   );
 
   static TextStyle brandName = GoogleFonts.poppins(
@@ -155,7 +161,7 @@ class ThemeClass {
 
   static TextStyle genAiTxt = GoogleFonts.poppins(
     fontSize: 22,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w500,
     color: qwhite,
   );
 
@@ -312,7 +318,7 @@ class ThemeClass {
             ],
           ),
           content: SizedBox(
-            height: screenSize.height * 0.2,
+            height: screenSize.height * 0.21,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

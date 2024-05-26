@@ -5,8 +5,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quanta/constants/theme.dart';
+import 'package:quanta/views/user_pages/deals_page/deals_view.dart';
 import 'package:quanta/views/user_pages/home_page.dart';
 import 'package:quanta/views/user_pages/products_page/product_page.dart';
+import 'package:quanta/views/user_pages/profile_page/profile_page.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
@@ -27,14 +29,20 @@ class BottomNavBar extends StatelessWidget {
           ),
           child: NavigationBarTheme(
             data: NavigationBarThemeData(
-              labelTextStyle: MaterialStateProperty.all(
-                GoogleFonts.poppins(
+                labelTextStyle: MaterialStateTextStyle.resolveWith((state) {
+              if (state.contains(MaterialState.selected)) {
+                return GoogleFonts.poppins(
                   color: qblack,
                   fontSize: 10,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
+                  fontWeight: FontWeight.w700,
+                );
+              }
+              return GoogleFonts.poppins(
+                color: qblack,
+                fontSize: 10,
+                fontWeight: FontWeight.w500,
+              );
+            })),
             child: NavigationBar(
               height: 80,
               elevation: 0,
@@ -46,12 +54,14 @@ class BottomNavBar extends StatelessWidget {
               destinations: [
                 NavigationDestination(
                   icon: SvgPicture.network(
-                    'https://www.svgrepo.com/show/498091/home.svg',
-                    color: qblack,
+                    'https://www.svgrepo.com/show/498093/home-1.svg',
+                    height: 24,
+                    width: 24,
                   ),
                   selectedIcon: SvgPicture.network(
-                    'https://www.svgrepo.com/show/498091/home.svg',
-                    color: qblack,
+                    'https://www.svgrepo.com/show/498093/home-1.svg',
+                    height: 24,
+                    width: 24,
                   ),
                   label: 'Home',
                 ),
@@ -104,7 +114,7 @@ class NavigationController extends GetxController {
   final screens = [
     const HomePage(),
     ProductPage(),
-    const HomePage(),
-    const HomePage(),
+    const DealsPage(),
+    const ProfilePage(),
   ];
 }
