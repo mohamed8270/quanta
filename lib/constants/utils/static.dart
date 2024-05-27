@@ -22,6 +22,14 @@ class StaticClass {
 
   static String wifi = 'assets/icons/wifi.svg';
   static String logo = 'assets/icons/logo.svg';
+  static String notification =
+      'https://www.svgrepo.com/show/498259/notification-bing.svg';
+  static String permission =
+      'https://www.svgrepo.com/show/526581/lock-password.svg';
+  static String privacy = 'https://www.svgrepo.com/show/526657/shield-user.svg';
+  static String feedback = 'https://www.svgrepo.com/show/498514/user-edit.svg';
+  static String about =
+      'https://www.svgrepo.com/show/324204/about-information-info-help.svg';
 
   Widget outlineSvg(asset) {
     return SvgPicture.asset(
