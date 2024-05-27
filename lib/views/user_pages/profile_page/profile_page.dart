@@ -8,15 +8,18 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: qwhite,
+      backgroundColor: qgrey,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50),
         child: AppBarWidget(
-          leading: 'https://www.svgrepo.com/show/529449/cart-check.svg',
+          leading: 'https://www.svgrepo.com/show/527439/settings.svg',
           leadingcolor: qblack,
-          txt: 'Profile',
+          txt: 'Account Settings',
           actions: [],
         ),
+      ),
+      body: Column(
+        children: [],
       ),
     );
   }

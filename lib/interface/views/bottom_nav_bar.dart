@@ -53,6 +53,7 @@ class BottomNavBar extends StatelessWidget {
               onDestinationSelected: (index) =>
                   navigateControl.selectedIndex.value = index,
               indicatorColor: qwhite,
+              surfaceTintColor: qwhite,
               destinations: [
                 Column(
                   children: [
@@ -60,7 +61,7 @@ class BottomNavBar extends StatelessWidget {
                       isSelected: navigateControl.selectedIndex.value == 0,
                     ),
                     SizedBox(
-                      height: 48.5,
+                      height: 50,
                       child: NavigationDestination(
                         icon: StaticClass().outlineSvg(StaticClass.homeOutline),
                         selectedIcon:
@@ -76,7 +77,7 @@ class BottomNavBar extends StatelessWidget {
                       isSelected: navigateControl.selectedIndex.value == 1,
                     ),
                     SizedBox(
-                      height: 48.5,
+                      height: 50,
                       child: NavigationDestination(
                         icon:
                             StaticClass().outlineSvg(StaticClass.amazonOutline),
@@ -93,7 +94,7 @@ class BottomNavBar extends StatelessWidget {
                       isSelected: navigateControl.selectedIndex.value == 2,
                     ),
                     SizedBox(
-                      height: 48.5,
+                      height: 50,
                       child: NavigationDestination(
                         icon: StaticClass().outlineSvg(StaticClass.saleOutline),
                         selectedIcon:
@@ -109,7 +110,7 @@ class BottomNavBar extends StatelessWidget {
                       isSelected: navigateControl.selectedIndex.value == 3,
                     ),
                     SizedBox(
-                      height: 48.5,
+                      height: 50,
                       child: NavigationDestination(
                         icon: StaticClass()
                             .outlineSvg(StaticClass.profileOutline),
