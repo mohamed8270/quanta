@@ -63,3 +63,24 @@ class SettingsWidgetShape extends StatelessWidget {
     );
   }
 }
+
+class SettingsPrefWidgets extends StatelessWidget {
+  const SettingsPrefWidgets({super.key, required this.txt});
+
+  final String txt;
+
+  @override
+  Widget build(BuildContext context) {
+    final screenSize = MediaQuery.sizeOf(context);
+    return Container(
+      height: screenSize.height * 0.07,
+      width: screenSize.width,
+      decoration: const BoxDecoration(color: qgrey),
+      alignment: Alignment.centerLeft,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: Text(txt, style: ThemeClass.heading4),
+      ),
+    );
+  }
+}
