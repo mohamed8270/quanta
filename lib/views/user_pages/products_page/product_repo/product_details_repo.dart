@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:quanta/constants/theme.dart';
@@ -138,34 +136,49 @@ class ProductDetailsRepo extends StatelessWidget {
             ),
             ThemeClass.space2,
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   discountPercentage == '0' ? '' : '-$discountPercentage%',
                   style: ThemeClass.detailDiscountPercentageTxt,
                 ),
                 ThemeClass.space2,
-                Text(
-                  currency,
-                  style: ThemeClass.symbolTxt,
+                const SizedBox(
+                  height: 60,
+                  child: VerticalDivider(thickness: 2, width: 2, color: qgrey),
                 ),
-                Text(
-                  formatPrice(currentPrice),
-                  style: ThemeClass.detailPriceTxt,
-                ),
-              ],
-            ),
-            ThemeClass.space0,
-            Row(
-              children: [
-                Text(
-                  'M.R.P',
-                  style: ThemeClass.heading3,
-                ),
-                ThemeClass.space0,
-                Text(
-                  '₹ ${formatPrice(originalPrice)}',
-                  style: ThemeClass.detailMrpTxt,
+                ThemeClass.space2,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          currency,
+                          style: ThemeClass.symbolTxt,
+                        ),
+                        Text(
+                          formatPrice(currentPrice),
+                          style: ThemeClass.detailPriceTxt,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'M.R.P',
+                          style: ThemeClass.heading5,
+                        ),
+                        ThemeClass.space0,
+                        Text(
+                          '₹ ${formatPrice(originalPrice)}',
+                          style: ThemeClass.detailMrpTxt,
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),

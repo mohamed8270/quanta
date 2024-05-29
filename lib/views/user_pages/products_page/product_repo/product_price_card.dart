@@ -33,7 +33,12 @@ class ProductPriceCard extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SvgPicture.network(icn, height: 20, width: 20),
+                SvgPicture.network(
+                  icn,
+                  height: 20,
+                  width: 20,
+                  colorFilter: const ColorFilter.mode(qblack, BlendMode.srcIn),
+                ),
                 ThemeClass.space0,
                 Text('₹$pricetxt', style: ThemeClass.heading1)
               ],

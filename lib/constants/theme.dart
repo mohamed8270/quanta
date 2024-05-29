@@ -131,7 +131,7 @@ class ThemeClass {
   );
 
   static TextStyle detailMrpTxt = GoogleFonts.poppins(
-    fontSize: 14,
+    fontSize: 10,
     fontWeight: FontWeight.w500,
     color: qblack,
     decoration: TextDecoration.lineThrough,
