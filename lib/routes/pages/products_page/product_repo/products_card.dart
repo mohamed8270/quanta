@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:quanta/common/styles/static.dart';
 import 'package:quanta/common/styles/theme.dart';
+import 'package:quanta/utils/view/text_view.dart';
 
 class ProductCardRepo extends StatelessWidget {
   const ProductCardRepo(
@@ -26,31 +26,7 @@ class ProductCardRepo extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.sizeOf(context);
     var text = TextClass();
-
-    String offerCheck(off) {
-      if (off == '0') {
-        return 'Limited time deal!';
-      } else if (off != null) {
-        return '$off% off';
-      }
-      return 'No offer!';
-    }
-
-    bool isNumeric(String str) {
-      if (str.isEmpty) return false;
-      return num.tryParse(str) != null;
-    }
-
-    String formatPrice(String priceString) {
-      if (isNumeric(priceString)) {
-        double price = double.parse(priceString);
-        final formatter = NumberFormat('#,###,###,###.##');
-        return formatter.format(price);
-      } else {
-        return priceString;
-      }
-    }
-
+    var filter = Filter();
     return Padding(
       padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
       child: InkWell(
@@ -102,8 +78,8 @@ class ProductCardRepo extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         text.textWidget(symbol, 12.0, TextClass.w5, qblack),
-                        text.textWidget(
-                            formatPrice(price), 22.0, TextClass.w5, qblack),
+                        text.textWidget(filter.formatPrice(price), 22.0,
+                            TextClass.w5, qblack),
                       ],
                     ),
                     StaticClass.gap0,
@@ -119,8 +95,8 @@ class ProductCardRepo extends StatelessWidget {
                         alignment: Alignment.center,
                         child: Padding(
                           padding: const EdgeInsets.all(3),
-                          child: text.textWidget(
-                              offerCheck(offer), 10.0, TextClass.w5, qwhite),
+                          child: text.textWidget(filter.offerCheck(offer), 10.0,
+                              TextClass.w5, qwhite),
                         ),
                       ),
                     ),
