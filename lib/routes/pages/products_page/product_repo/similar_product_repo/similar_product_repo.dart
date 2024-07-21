@@ -22,22 +22,21 @@ class GetSimilarProductsRepo extends StatelessWidget {
           return const MongoDataShimmer();
         } else if (snapshot.hasData) {
           List<SimilarProductsModel>? similarmodel = snapshot.data;
-          return SizedBox(
-            height: screenSize.height * 0.22,
-            width: screenSize.width,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
+          return GridView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              physics: const ScrollPhysics(parent: ScrollPhysics()),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 8,
+                  // mainAxisSpacing: 8,
+                  childAspectRatio: screenSize.width / screenSize.height * 1.3),
               itemCount: similarmodel!.length,
               itemBuilder: (context, index) {
                 final data = similarmodel[index];
                 return ProductCardRepo(
-                  click: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          ProductDetailPage(id: data.id.toString()),
-                    ),
-                  ),
+                  click: () =>
+                      Get.to(ProductDetailPage(id: data.id.toString())),
                   imgurl: data.image.toString(),
                   title: data.title.toString(),
                   offer: data.discountPercentage.toString(),
@@ -45,9 +44,7 @@ class GetSimilarProductsRepo extends StatelessWidget {
                   brand: data.brand.toString(),
                   symbol: data.currency.toString(),
                 );
-              },
-            ),
-          );
+              });
         }
         return const Text('Server Busy');
       },

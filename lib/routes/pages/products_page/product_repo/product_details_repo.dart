@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quanta/common/styles/static.dart';
 import 'package:quanta/common/styles/theme.dart';
@@ -207,7 +206,6 @@ class ProductDetailsRepo extends StatelessWidget {
             StaticClass.gap1,
             text.textWidget('Similar Products', 14.0, TextClass.w6, qblack),
             GetSimilarProductsRepo(id: id),
-            const Gap(100),
           ],
         ),
       ),
