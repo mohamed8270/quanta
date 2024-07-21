@@ -26,9 +26,9 @@ class Filter {
   // offer check
   String offerCheck(off) {
     if (off == '0') {
-      return 'Limited time deal!';
+      return 'Limited Stock!';
     } else if (off != null) {
-      return '$off% off';
+      return '- $off%';
     }
     return 'No offer!';
   }

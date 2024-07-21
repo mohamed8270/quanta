@@ -10,8 +10,8 @@ class ProductCardRepo extends StatelessWidget {
       required this.title,
       required this.offer,
       required this.price,
-      required this.brand,
       required this.symbol,
+      required this.brand,
       required this.click});
 
   final String imgurl;
@@ -28,51 +28,71 @@ class ProductCardRepo extends StatelessWidget {
     var text = TextClass();
     var filter = Filter();
     return Padding(
-      padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-      child: InkWell(
+      padding: const EdgeInsets.only(top: 10),
+      child: GestureDetector(
         onTap: click,
-        borderRadius: BorderRadius.circular(10),
         child: Container(
-          height: screenSize.height * 0.21,
-          width: screenSize.width * 0.95,
+          height: screenSize.height * 0.4,
+          width: screenSize.width,
           decoration: BoxDecoration(
             color: qgrey.withOpacity(0.25),
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: qgrey.withOpacity(0.7), width: 1.5),
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(width: 1.2, color: qgrey.withOpacity(0.7)),
           ),
-          alignment: Alignment.center,
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  height: screenSize.height * 0.25,
-                  width: screenSize.width * 0.35,
-                  decoration: BoxDecoration(
-                    color: qwhite,
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: NetworkImage(imgurl),
-                      fit: BoxFit.contain,
-                      filterQuality: FilterQuality.high,
-                    ),
+          child: Column(
+            children: [
+              Container(
+                height: screenSize.height * 0.18,
+                width: screenSize.width,
+                decoration: BoxDecoration(
+                  color: qwhite,
+                  borderRadius:
+                      const BorderRadius.vertical(top: Radius.circular(5)),
+                  image: DecorationImage(
+                    image: NetworkImage(imgurl),
+                    fit: BoxFit.scaleDown,
+                    filterQuality: FilterQuality.high,
                   ),
                 ),
-                StaticClass.gap1,
-                Column(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10, left: 10),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Container(
+                          height: screenSize.height * 0.03,
+                          // width: screenSize.width * 0.2,
+                          decoration: BoxDecoration(
+                            color: qred,
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          alignment: Alignment.center,
+                          child: Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: text.textWidget(filter.offerCheck(offer),
+                                10.0, TextClass.w5, qwhite),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      width: screenSize.width * 0.5,
-                      child: text.textWidget(title, 11.0, TextClass.w5, qblack,
-                          TextOverflow.ellipsis, 1.5, TextAlign.start, 3),
-                    ),
-                    StaticClass.gap0,
                     text.textWidget(
                         brand, 8.0, TextClass.w5, qblack.withOpacity(0.5)),
+                    StaticClass.gap0,
+                    SizedBox(
+                      width: screenSize.width,
+                      child: text.textWidget(title, 10.0, TextClass.w5, qblack,
+                          TextOverflow.ellipsis, 1.5, TextAlign.start, 2),
+                    ),
                     StaticClass.gap1,
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,28 +102,10 @@ class ProductCardRepo extends StatelessWidget {
                             TextClass.w5, qblack),
                       ],
                     ),
-                    StaticClass.gap0,
-                    FittedBox(
-                      fit: BoxFit.fitWidth,
-                      child: Container(
-                        height: screenSize.height * 0.03,
-                        // width: screenSize.width * 0.2,
-                        decoration: BoxDecoration(
-                          color: qgreen,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        alignment: Alignment.center,
-                        child: Padding(
-                          padding: const EdgeInsets.all(3),
-                          child: text.textWidget(filter.offerCheck(offer), 10.0,
-                              TextClass.w5, qwhite),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

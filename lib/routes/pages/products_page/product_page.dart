@@ -18,7 +18,7 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final screenSize = MediaQuery.sizeOf(context);
+    final screenSize = MediaQuery.sizeOf(context);
     return Scaffold(
       backgroundColor: qwhite,
       appBar: const PreferredSize(
@@ -38,22 +38,29 @@ class ProductPage extends StatelessWidget {
             return const LinearProgressShimmer();
           } else if (snapshot.hasData) {
             List<MongoDBmodel>? mongoData = snapshot.data;
-            return ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: mongoData!.length,
-              itemBuilder: (context, index) {
-                final data = mongoData[index];
-                return ProductCardRepo(
-                  click: () =>
-                      Get.to(ProductDetailPage(id: data.id.toString())),
-                  imgurl: data.image.toString(),
-                  title: data.title.toString(),
-                  offer: data.discountPercentage.toString(),
-                  price: data.currentPrice.toString(),
-                  brand: data.brand.toString(),
-                  symbol: data.currency.toString(),
-                );
-              },
+            return Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10),
+              child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 8,
+                      // mainAxisSpacing: 8,
+                      childAspectRatio:
+                          screenSize.width / screenSize.height * 1.3),
+                  itemCount: mongoData!.length,
+                  itemBuilder: (context, index) {
+                    final data = mongoData[index];
+                    return ProductCardRepo(
+                      click: () =>
+                          Get.to(ProductDetailPage(id: data.id.toString())),
+                      imgurl: data.image.toString(),
+                      title: data.title.toString(),
+                      offer: data.discountPercentage.toString(),
+                      price: data.currentPrice.toString(),
+                      brand: data.brand.toString(),
+                      symbol: data.currency.toString(),
+                    );
+                  }),
             );
           } else if (snapshot.hasError) {
             return SnackBarClass()
