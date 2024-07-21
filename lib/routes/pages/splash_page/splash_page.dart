@@ -8,7 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:quanta/bindings/controllers/bottom_nav_bar.dart';
 import 'package:quanta/common/styles/static.dart';
-// import 'package:quanta/common/styles/theme.dart';
+import 'package:quanta/common/styles/theme.dart';
 import 'package:quanta/common/widgets/interface/internet_error_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -42,14 +42,14 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: qwhite,
+      backgroundColor: qwhite,
       body: SafeArea(
         child: Center(
           child: SvgPicture.asset(
             StaticClass.logo,
             height: 140,
             width: 140,
-            // color: qblue,
+            // color: qwhite,
           ),
         ),
       ),

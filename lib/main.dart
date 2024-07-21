@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:quanta/bindings/controllers/connectivity_check.dart';
 import 'package:quanta/bindings/controllers/network_dependency_injection.dart';
@@ -6,6 +7,7 @@ import 'package:quanta/routes/wrapper/wrapper.dart';
 import 'package:quanta/utils/device/system_chrome.dart';
 
 Future<void> main() async {
+  await dotenv.load();
   WidgetsFlutterBinding.ensureInitialized();
   SysChromeMethod.systemUImode();
   SysChromeMethod.systemUIoverlay();
